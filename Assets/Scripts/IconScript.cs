@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
     //Sets the icon
     public Icon icon;
@@ -17,6 +17,14 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     public float startingPositionX;
     public float startingPositionY;
     bool isBeingHeld = false;
+
+    public WindowScript window;
+
+    int clickCount = 0;
+    int openOnClickCount = 2;
+
+    float clickDelay;
+    public float maxClickDelay = 1f;
 
     //OnValidate will modify the private variables in the editor.
     void OnValidate()
@@ -40,12 +48,13 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     void Update()
     {
-
+        clickDelay -= Time.deltaTime;
+        if (clickDelay <= 0) clickCount = 0;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        //We set the
+        //We check to find the canvas of the User Interface
         var canvas = FindInParents<Canvas>(gameObject);
         if (canvas == null)
             return;
@@ -118,5 +127,20 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
             t = t.parent;
         }
         return comp;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        clickCount++;
+        clickDelay = maxClickDelay;
+
+        Debug.Log(clickCount);
+
+        if (clickCount == openOnClickCount)
+        {
+            Instantiate(window.gameObject, transform.parent);
+            window.window = icon.window;
+            clickCount = 0;
+        }
     }
 }

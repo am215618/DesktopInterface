@@ -38,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 64, y: -64}
-  m_SizeDelta: {x: 67.691284, y: 65.80145}
+  m_SizeDelta: {x: 68, y: 68}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3289974856533536678
 MonoBehaviour:
@@ -53,8 +53,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 11400000, guid: dd36db1211879124b8ccefe1b2bcb299, type: 2}
-  startingPositionX: 0
-  startingPositionY: 0
+  startingPositionX: 64
+  startingPositionY: -64
+  window: {fileID: 4043002504603310629, guid: 4a11d9ca38e7d7f49a54045548dee915, type: 3}
+  maxClickDelay: 1
 --- !u!222 &5427987697085765799
 CanvasRenderer:
   m_ObjectHideFlags: 0

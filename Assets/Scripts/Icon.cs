@@ -7,4 +7,6 @@ public class Icon : ScriptableObject
 {
     public Sprite iconSprite;
     public string iconName;
+
+    public Window window;
 }
