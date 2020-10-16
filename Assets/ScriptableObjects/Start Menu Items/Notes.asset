@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7597fa70dc41fbf41b8ea697c7f002bc, type: 3}
+  m_Script: {fileID: 11500000, guid: 4531e6113e7e6f847a2cf79969a6a6a3, type: 3}
   m_Name: Notes
   m_EditorClassIdentifier: 
+  buttonID: 0
+  sprite: {fileID: 21300000, guid: 026b061b12850d044a94d33586eb6d68, type: 3}
+  menuName: Notes
   window: {fileID: 7298903938672449015, guid: 4a11d9ca38e7d7f49a54045548dee915, type: 3}
-  titleBarSprite: {fileID: 21300000, guid: 026b061b12850d044a94d33586eb6d68, type: 3}
-  titleBarText: Notes
-  windowWidth: 200
-  windowHeight: 17

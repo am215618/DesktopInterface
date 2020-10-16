@@ -4,35 +4,30 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class StartMenuScript : MonoBehaviour, IPointerClickHandler
+public class StartMenuScript : MonoBehaviour
 {
-    public Window[] windows;
-    public Toggle[] startMenuItems;
+    public List<StartMenuItem> startMenuItems;
+    [SerializeField] GameObject[] buttons;
 
-    Dropdown dropdown;
-
-    public WindowScript window;
-
-    public void OnPointerClick(PointerEventData eventData)
+    private void OnValidate()
     {
-        startMenuItems = GameObject.Find("Dropdown List").GetComponentsInChildren<Toggle>();
-        for (int i = 0; i < startMenuItems.Length; i++)
+        buttons = new GameObject[startMenuItems.Count];
+
+        for (int i = 0; i < startMenuItems.Count; i++)
         {
-            startMenuItems[i].GetComponent<StartMenuButtonScript>().buttonID = i;
+            buttons[i] = GetComponentInChildren<Toggle>().gameObject;
         }
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        dropdown = GetComponent<Dropdown>();
-        
-        //Add Shutdown to the end of the list
-    }
+        buttons = new GameObject[startMenuItems.Count];
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        for (int i = 0; i < startMenuItems.Count; i++)
+        {
+            buttons[i] = GetComponentsInChildren<Toggle>()[i].gameObject;
+            buttons[i].GetComponent<StartMenuButtonScript>().startMenuItem = startMenuItems[i];
+        }
     }
 }

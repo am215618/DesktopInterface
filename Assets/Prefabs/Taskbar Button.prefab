@@ -286,5 +286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   window: {fileID: 0}
+  selectedButton: {fileID: 21300000, guid: a0056528357e4764c89f77a3700353c3, type: 3}
+  defaultButton: {fileID: 21300000, guid: eb834d94a4b29514eb928fb27e3ab58e, type: 3}
   taskbarImage: {fileID: 5925396385035878635}
   taskbarText: {fileID: 8516889690720934797}

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7597fa70dc41fbf41b8ea697c7f002bc, type: 3}
-  m_Name: Notes
+  m_Name: Shutdown
   m_EditorClassIdentifier: 
-  window: {fileID: 7298903938672449015, guid: 4a11d9ca38e7d7f49a54045548dee915, type: 3}
-  titleBarSprite: {fileID: 21300000, guid: 026b061b12850d044a94d33586eb6d68, type: 3}
-  titleBarText: Notes
+  window: {fileID: 7298903938672449015, guid: c0e8765bbc0c395489e4d77b2e7386e4, type: 3}
+  titleBarSprite: {fileID: 0}
+  titleBarText: Shutdown
   windowWidth: 200
-  windowHeight: 17
+  windowHeight: 200

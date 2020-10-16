@@ -18,7 +18,7 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     public float startingPositionY;
     bool isBeingHeld = false;
 
-    public WindowScript window;
+    public GameObject window;
 
     int clickCount = 0;
     int openOnClickCount = 2;
@@ -29,7 +29,7 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     //OnValidate will modify the private variables in the editor.
     void OnValidate()
     {
-        iconImage = transform.GetChild(0).GetComponent<Image>();
+        iconImage = GetComponentInChildren<Image>();
         iconText = GetComponentInChildren<Text>();
 
         iconImage.sprite = icon.iconSprite;
@@ -44,6 +44,7 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
         iconImage.sprite = icon.iconSprite;
         iconText.text = icon.iconName;
+        window = icon.window;
     }
 
     void Update()
@@ -72,6 +73,7 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         image.color = new Color(0f, 0f, 0.5f, 1f);
         image.GetComponentInChildren<Image>().sprite = null;
         image.GetComponentInChildren<Image>().color = new Color(0, 0, 0.5f, 1);
+        //image.GetComponentInChildren<Image>().rectTransform.localPosition = new Vector3(-image.GetComponentInChildren<Image>().rectTransform.localPosition.x, -image.GetComponentInChildren<Image>().rectTransform.localPosition.y, 0);
         image.GetComponentInChildren<Text>().color = Color.white;
 
         //image.SetNativeSize();
@@ -138,8 +140,7 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
         if (clickCount == openOnClickCount)
         {
-            Instantiate(window.gameObject, transform.parent);
-            window.window = icon.window;
+            Instantiate(window, transform.parent);
             clickCount = 0;
         }
     }

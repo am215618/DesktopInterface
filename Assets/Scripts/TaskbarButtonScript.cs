@@ -7,6 +7,9 @@ public class TaskbarButtonScript : ButtonScript
 {
     public GameObject window;
 
+    public Sprite selectedButton;
+    public Sprite defaultButton;
+
     [SerializeField] Image taskbarImage;
     [SerializeField] Text taskbarText;
 
@@ -26,7 +29,19 @@ public class TaskbarButtonScript : ButtonScript
         taskbarImage.sprite = windowScript.titleBarIcon.sprite;
         taskbarText.text = windowScript.titleBarText.text;
     }
-    
+
+    public void OnWindowActive()
+    {
+        Image buttonImage = GetComponent<Image>();
+        buttonImage.sprite = selectedButton;
+    }
+
+    public void OnWindowInactive()
+    {
+        Image buttonImage = GetComponent<Image>();
+        buttonImage.sprite = defaultButton;
+    }
+
     public void OnWindowClosed()
     {
         taskbarImage = null;

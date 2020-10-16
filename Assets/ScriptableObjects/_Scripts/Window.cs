@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Window", menuName = "Window")]
+//[CreateAssetMenu(fileName = "Window", menuName = "Window")]
 public class Window : ScriptableObject
 {
+    public GameObject window;
+
     public Sprite titleBarSprite;
     public string titleBarText;
 
