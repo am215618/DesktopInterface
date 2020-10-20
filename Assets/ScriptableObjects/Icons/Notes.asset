@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconSprite: {fileID: 21300000, guid: 026b061b12850d044a94d33586eb6d68, type: 3}
   iconName: Notes
-  window: {fileID: 11400000, guid: ae253dc9f32ac3146a0096df6c824c65, type: 2}
+  window: {fileID: 1198395962326679233, guid: 4a11d9ca38e7d7f49a54045548dee915, type: 3}

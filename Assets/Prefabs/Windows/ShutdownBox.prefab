@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5425485209411106749}
   - component: {fileID: 2104079501624421464}
   - component: {fileID: 4271866829015374004}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 8981535784806895273}
   - component: {fileID: 1821303734867880759}
   - component: {fileID: 7895472789357307633}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: CloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,11 +111,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6356486629852301033}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -9, y: -9}
+  m_AnchoredPosition: {x: -9, y: -8}
   m_SizeDelta: {x: 12, y: 12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8981535784806895273
@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 601076045828057256}
   - component: {fileID: 7169223227790681991}
   - component: {fileID: 3210533958662316081}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: No Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -350,7 +350,7 @@ GameObject:
   - component: {fileID: 7452449919246090098}
   - component: {fileID: 8314878064642383524}
   - component: {fileID: 3857239582146291099}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -417,6 +417,80 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Yes
+--- !u!1 &5350956665921384780
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7898513372420514408}
+  - component: {fileID: 3531581075908018170}
+  - component: {fileID: 46244211534784451}
+  m_Layer: 31
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7898513372420514408
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5350956665921384780}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6356486629852301033}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -8.5}
+  m_SizeDelta: {x: 320, y: 17}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &3531581075908018170
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5350956665921384780}
+  m_CullTransparentMesh: 0
+--- !u!114 &46244211534784451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5350956665921384780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 5882c5730e4ae304c9289959aab744ef, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &6356486629002425552
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,7 +502,7 @@ GameObject:
   - component: {fileID: 6356486629002425555}
   - component: {fileID: 1833417498561589337}
   - component: {fileID: 6143521647901312107}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: WindowContents
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -451,7 +525,7 @@ RectTransform:
   - {fileID: 5845038694122923366}
   - {fileID: 2755343232629308120}
   m_Father: {fileID: 6356486629852301033}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -506,7 +580,7 @@ GameObject:
   - component: {fileID: 6356486629357941318}
   - component: {fileID: 6356486629357941312}
   - component: {fileID: 6356486629357941313}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -525,7 +599,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6356486629852301033}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -584,7 +658,7 @@ GameObject:
   - component: {fileID: 6356486629852301033}
   - component: {fileID: 6356486629852301034}
   - component: {fileID: 6356486629852301035}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: WindowBackdrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -602,6 +676,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 7898513372420514408}
   - {fileID: 6356486629357941318}
   - {fileID: 5708584154826390001}
   - {fileID: 6356486629002425555}
@@ -662,7 +737,7 @@ GameObject:
   - component: {fileID: 8394778253292589471}
   - component: {fileID: 3995052566604080057}
   - component: {fileID: 8535868794528164105}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: Yes Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -791,7 +866,7 @@ GameObject:
   - component: {fileID: 5297462155534413108}
   - component: {fileID: 663764784533637240}
   - component: {fileID: 8037702058000841255}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -863,10 +938,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1549112966982510243}
-  - component: {fileID: 7841444005074884115}
   - component: {fileID: 3998477597224080792}
   - component: {fileID: 7388326874631353770}
-  m_Layer: 8
+  - component: {fileID: 3209548528315668471}
+  m_Layer: 31
   m_Name: ShutdownBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -893,19 +968,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 91.50003}
   m_SizeDelta: {x: 320, y: 17}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7841444005074884115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7298903938672449015}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a1a46eba8f3af3429589e7c0b2298d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  draggingTransform: {fileID: 1549112966982510243}
 --- !u!114 &3998477597224080792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -918,7 +980,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a10797211466b3b4eab14c8544b019f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  window: {fileID: 11400000, guid: e573f1e0f7f96a84a9c2610f740b00e4, type: 2}
   titleBarIcon: {fileID: 0}
   titleBarText: {fileID: 6356486629357941313}
   taskbarObject: {fileID: 8516889691892751072, guid: 5db51fb469928924a808bd1760ee2ee7,
@@ -936,6 +997,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 197dbd9033e400845af8a32d0c5ca83f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!222 &3209548528315668471
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7298903938672449015}
+  m_CullTransparentMesh: 0
 --- !u!1 &7857684266309201228
 GameObject:
   m_ObjectHideFlags: 0
@@ -947,7 +1016,7 @@ GameObject:
   - component: {fileID: 7697587532265076778}
   - component: {fileID: 3887381263241345046}
   - component: {fileID: 6213256707879468299}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}

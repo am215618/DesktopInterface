@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconSprite: {fileID: 21300000, guid: 6823e574c526baf4486397bae9f2963d, type: 3}
   iconName: Shutdown
-  window: {fileID: 0}
+  window: {fileID: 7298903938672449015, guid: c0e8765bbc0c395489e4d77b2e7386e4, type: 3}

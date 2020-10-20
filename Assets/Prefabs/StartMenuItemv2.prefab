@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startMenuItem: {fileID: 0}
+  window: {fileID: 0}
   toggle: {fileID: 4814516758557329656}
 --- !u!114 &4814516758557329656
 MonoBehaviour:
@@ -302,7 +303,7 @@ GameObject:
   - component: {fileID: 4814516759297947909}
   m_Layer: 5
   m_Name: Item Checkmark
-  m_TagString: Untagged
+  m_TagString: Icon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

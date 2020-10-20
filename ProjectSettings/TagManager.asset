@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Window
+  - Icon
   layers:
   - Default
   - TransparentFX
@@ -37,7 +38,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Shutdown Box
   m_SortingLayers:
   - name: Default
     uniqueID: 0

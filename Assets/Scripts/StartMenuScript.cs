@@ -6,8 +6,15 @@ using UnityEngine.UI;
 
 public class StartMenuScript : MonoBehaviour
 {
+    ThemeManager themeManager;
+
     public List<StartMenuItem> startMenuItems;
     [SerializeField] GameObject[] buttons;
+
+    private void Awake()
+    {
+        themeManager = ThemeManager.themeManagerInstance;
+    }
 
     private void OnValidate()
     {
@@ -28,6 +35,14 @@ public class StartMenuScript : MonoBehaviour
         {
             buttons[i] = GetComponentsInChildren<Toggle>()[i].gameObject;
             buttons[i].GetComponent<StartMenuButtonScript>().startMenuItem = startMenuItems[i];
+            if(themeManager.TaskbarColour.r <= 0.5f && themeManager.TaskbarColour.g <= 0.5f && themeManager.TaskbarColour.b <= 0.5f)
+            {
+                buttons[i].GetComponentInChildren<Text>().color = Color.white;
+            }
+            else
+            {
+                buttons[i].GetComponentInChildren<Text>().color = Color.black;
+            }
         }
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class TaskbarButtonScript : ButtonScript
 {
+    [SerializeField] ThemeManager themeManager;
     public GameObject window;
 
     public Sprite selectedButton;
@@ -12,6 +13,11 @@ public class TaskbarButtonScript : ButtonScript
 
     [SerializeField] Image taskbarImage;
     [SerializeField] Text taskbarText;
+
+    private void Awake()
+    {
+        themeManager = ThemeManager.themeManagerInstance;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +31,16 @@ public class TaskbarButtonScript : ButtonScript
         WindowScript windowScript = window.GetComponent<WindowScript>();
         taskbarImage = transform.GetChild(1).GetComponentInChildren<Image>();
         taskbarText = GetComponentInChildren<Text>();
+
+        GetComponent<Image>().color = themeManager.TaskbarColour;
+        if(GetComponent<Image>().color.r <= 0.5f && GetComponent<Image>().color.g <= 0.5f && GetComponent<Image>().color.b <= 0.5f)
+        {
+            GetComponentInChildren<Text>().color = Color.white;
+        }
+        else
+        {
+            GetComponentInChildren<Text>().color = Color.black;
+        }
 
         taskbarImage.sprite = windowScript.titleBarIcon.sprite;
         taskbarText.text = windowScript.titleBarText.text;
