@@ -15,4 +15,4 @@ MonoBehaviour:
   buttonID: 0
   sprite: {fileID: 21300000, guid: a7e828656044cca45b5862a2995929c1, type: 3}
   menuName: Settings
-  window: {fileID: 0}
+  window: {fileID: 1198395962326679233, guid: 30ac2af1b119c5741bf234076a841b1f, type: 3}

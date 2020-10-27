@@ -19,7 +19,9 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     public float startingPositionY;
     bool isBeingHeld = false;
 
-    public GameObject window;
+    [SerializeField] GameObject window;
+
+    public bool canDrag;
 
     int clickCount = 0;
     int openOnClickCount = 2;
@@ -37,12 +39,14 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
         iconImage.sprite = icon.iconSprite;
         iconText.text = icon.iconName;
+
+        window = icon.window;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        iconImage = GetComponentInChildren<Image>();
+        iconImage = transform.GetChild(0).GetComponentInChildren<Image>();
         iconText = GetComponentInChildren<Text>();
 
         canvas = ThemeManager.themeManagerInstance.ui;
@@ -60,36 +64,43 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        draggingIcon = Instantiate(this.gameObject);
+        if (canDrag)
+        {
+            draggingIcon = Instantiate(this.gameObject);
 
-        draggingIcon.transform.SetParent(canvas.transform, false);
-        draggingIcon.transform.SetAsLastSibling();
+            draggingIcon.transform.SetParent(canvas.transform, false);
+            draggingIcon.transform.SetAsLastSibling();
 
-        IconScript draggingIconScript = draggingIcon.GetComponent<IconScript>();
-        Destroy(draggingIconScript);
+            IconScript draggingIconScript = draggingIcon.GetComponent<IconScript>();
+            Destroy(draggingIconScript);
 
-        var image = draggingIcon.GetComponent<Image>();
+            var image = draggingIcon.GetComponent<Image>();
 
-        image.color = new Color(0f, 0f, 0.5f, 1f);
-        image.GetComponentInChildren<Image>().sprite = null;
-        image.GetComponentInChildren<Image>().color = new Color(0, 0, 0.5f, 1);
-        //image.GetComponentInChildren<Image>().rectTransform.localPosition = new Vector3(-image.GetComponentInChildren<Image>().rectTransform.localPosition.x, -image.GetComponentInChildren<Image>().rectTransform.localPosition.y, 0);
-        image.GetComponentInChildren<Text>().color = Color.white;
+            image.color = new Color(0f, 0f, 0.5f, 1f);
+            image.GetComponentInChildren<Image>().sprite = null;
+            image.GetComponentInChildren<Image>().color = new Color(0, 0, 0.5f, 1);
+            //image.GetComponentInChildren<Image>().rectTransform.localPosition = new Vector3(-image.GetComponentInChildren<Image>().rectTransform.localPosition.x, -image.GetComponentInChildren<Image>().rectTransform.localPosition.y, 0);
+            image.GetComponentInChildren<Text>().color = Color.white;
 
-        draggingIcon.GetComponent<RectTransform>().anchoredPosition += eventData.delta / canvas.scaleFactor;
+            draggingIcon.GetComponent<RectTransform>().anchoredPosition += eventData.delta / canvas.scaleFactor;
+        }
     }
 
     public void OnDrag(PointerEventData data)
     {
-        draggingIcon.GetComponent<RectTransform>().anchoredPosition += data.delta / canvas.scaleFactor;
+        if(canDrag)
+            draggingIcon.GetComponent<RectTransform>().anchoredPosition += data.delta / canvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        this.transform.position = draggingIcon.transform.position;
+        if (canDrag)
+        {
+            this.transform.position = draggingIcon.transform.position;
 
-        if (draggingIcon != null)
-            Destroy(draggingIcon);
+            if (draggingIcon != null)
+                Destroy(draggingIcon);
+        }
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -101,7 +112,7 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
         if (clickCount == openOnClickCount)
         {
-            Instantiate(window, transform.parent.parent);
+            Instantiate(window, canvas.transform);
             clickCount = 0;
         }
     }

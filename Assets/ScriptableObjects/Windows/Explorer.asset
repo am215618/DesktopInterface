@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2e0ec5c7535e0143ad8d1dc2bf2c2b4, type: 3}
+  m_Name: Explorer
+  m_EditorClassIdentifier: 
+  window: {fileID: 1198395962326679233, guid: f584e39e3be9afd4ca0eea7a7d4b2086, type: 3}
+  titleBarSprite: {fileID: 21300000, guid: ec2a034ee15a3974895b2d307bd60717, type: 3}
+  titleBarText: Folder
+  windowWidth: 200
+  windowHeight: 200
+  icons:
+  - {fileID: 11400000, guid: dd36db1211879124b8ccefe1b2bcb299, type: 2}
+  isOpen: 0

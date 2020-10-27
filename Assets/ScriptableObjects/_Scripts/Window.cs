@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//[CreateAssetMenu(fileName = "Window", menuName = "Window")]
+[CreateAssetMenu(fileName = "Window", menuName = "Window/Default")]
 public class Window : ScriptableObject
 {
     public GameObject window;
