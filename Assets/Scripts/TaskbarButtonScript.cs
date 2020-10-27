@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class TaskbarButtonScript : ButtonScript
+public class TaskbarButtonScript : ButtonScript, IPointerClickHandler
 {
     [SerializeField] ThemeManager themeManager;
     public GameObject window;
@@ -63,5 +64,10 @@ public class TaskbarButtonScript : ButtonScript
         taskbarImage = null;
         taskbarText = null;
         Destroy(gameObject);
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        window.transform.SetAsLastSibling();
     }
 }
