@@ -41,9 +41,17 @@ public class NotificationObj : MonoBehaviour, IPointerEnterHandler, IPointerExit
         yield return new WaitForSeconds(1f);
         
         GameObject tmpPopup = Instantiate(Popup, gameObject.transform);
-        tmpPopup.GetComponent<PopupScript>().title.text = notification.notificationTitle;
-        tmpPopup.GetComponent<PopupScript>().description.text = notification.notificationText;
-        tmpPopup.GetComponent<PopupScript>().icon.sprite = notification.notificationSprite;
+
+        PopupScript popUpScript = tmpPopup.GetComponent<PopupScript>();
+        popUpScript.title.text = notification.notificationTitle;
+        popUpScript.description.text = notification.notificationText;
+        popUpScript.icon.sprite = notification.notificationSprite;
+
+        tmpPopup.GetComponent<Image>().color = ThemeManager.themeManagerInstance.toolTipColour;
+        tmpPopup.transform.GetChild(0).GetComponent<Image>().color = ThemeManager.themeManagerInstance.toolTipColour;
+
+        yield return new WaitForSeconds(5f);
+        Destroy(tmpPopup);
     }
 
     void ShowToolTip()

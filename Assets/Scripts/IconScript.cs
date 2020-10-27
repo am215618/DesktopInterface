@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
+public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler, IPointerExitHandler
 {
     //Sets the icon
     public Icon icon;
@@ -17,7 +17,6 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     public float startingPositionX;
     public float startingPositionY;
-    bool isBeingHeld = false;
 
     [SerializeField] GameObject window;
 
@@ -32,7 +31,7 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     //OnValidate will modify the private variables in the editor.
     void OnValidate()
     {
-        iconImage = GetComponentInChildren<Image>();
+        iconImage = transform.GetChild(0).GetComponentInChildren<Image>();
         iconText = GetComponentInChildren<Text>();
 
         //canvas = ThemeManager.themeManagerInstance.ui;
@@ -78,8 +77,7 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
             image.color = new Color(0f, 0f, 0.5f, 1f);
             image.GetComponentInChildren<Image>().sprite = null;
-            image.GetComponentInChildren<Image>().color = new Color(0, 0, 0.5f, 1);
-            //image.GetComponentInChildren<Image>().rectTransform.localPosition = new Vector3(-image.GetComponentInChildren<Image>().rectTransform.localPosition.x, -image.GetComponentInChildren<Image>().rectTransform.localPosition.y, 0);
+            image.GetComponentInChildren<Image>().color = ThemeManager.themeManagerInstance.SelectedColour;
             image.GetComponentInChildren<Text>().color = Color.white;
 
             draggingIcon.GetComponent<RectTransform>().anchoredPosition += eventData.delta / canvas.scaleFactor;
@@ -110,10 +108,21 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
         Debug.Log(clickCount);
 
-        if (clickCount == openOnClickCount)
+        if(clickCount == 1)
         {
+            GetComponent<Image>().color = ThemeManager.themeManagerInstance.SelectedColour;
+        }
+        else if (clickCount == openOnClickCount)
+        {
+            GetComponent<Image>().color = new Color(0, 0, 0, 0);
             Instantiate(window, canvas.transform);
             clickCount = 0;
         }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        GetComponent<Image>().color = new Color(0, 0, 0, 0);
+        clickCount = 0;
     }
 }

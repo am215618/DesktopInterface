@@ -19,6 +19,13 @@ public class WindowScript : MonoBehaviour, IPointerClickHandler
     public GameObject taskbarObject;
     GameObject instancedTaskbarObj;
 
+    public bool minimised;
+    public bool maximised;
+
+    [SerializeField] Image maximiseButton;
+
+    Vector2 originalWindowSize;
+
     [HideInInspector] public bool activeWindow = false;
 
     private void Awake()
@@ -29,24 +36,13 @@ public class WindowScript : MonoBehaviour, IPointerClickHandler
     void Start()
     {
         rect = GetComponent<RectTransform>();
-        //titleBarIcon = transform.GetChild(0).GetChild(1).GetComponent<Image>();
-        //titleBarText = GetComponentInChildren<Text>();
-
-        //if (titleBarIcon == null)
-        //{
-        //    Destroy(titleBarIcon.gameObject);
-        //    titleBarText.rectTransform.sizeDelta = new Vector2(window.windowWidth, titleBarText.rectTransform.sizeDelta.y);
-        //}
-        //else
-        //{
-        //    titleBarIcon.sprite = window.titleBarSprite;
-        //}
-        //titleBarText.text = window.titleBarText;
         if (spawnTaskbarObj)
         {
             instancedTaskbarObj = Instantiate(taskbarObject);
             instancedTaskbarObj.GetComponent<TaskbarButtonScript>().window = this.gameObject;
         }
+
+        maximiseButton.sprite = ThemeManager.themeManagerInstance.maximiseButton;
         //instancedTaskbarObj.GetComponent<TaskbarButtonScript>().OnWindowActive();
     }
 
@@ -57,11 +53,30 @@ public class WindowScript : MonoBehaviour, IPointerClickHandler
 
     public void Minimise()
     {
+        minimised = true;
         gameObject.SetActive(false);
     }
 
     public void Maximise()
     {
+        if (!maximised)
+        {
+            originalWindowSize = rect.sizeDelta;
+            maximiseButton.sprite = ThemeManager.themeManagerInstance.unmaximiseButton;
+
+            RectTransform iconSpace = GameObject.Find("IconSpace").GetComponent<RectTransform>();
+
+            rect.sizeDelta = new Vector2(Camera.main.pixelWidth, Mathf.Round(iconSpace.rect.height));
+            rect.position = new Vector3(rect.rect.width / 2, Mathf.Round(-(rect.rect.height / 2) + Camera.main.pixelHeight));
+
+            maximised = true;
+        }
+        else
+        {
+            rect.sizeDelta = originalWindowSize;
+            maximiseButton.sprite = ThemeManager.themeManagerInstance.maximiseButton;
+            maximised = false;
+        }
         //teleport it to the top left
         //make the window bigger
     }

@@ -12,11 +12,6 @@ public class StartMenuButtonScript : MonoBehaviour, IPointerClickHandler
     StartMenuScript startMenu;
     [SerializeField] GameObject window;
 
-    public void OnValidate()
-    {
-        window = startMenuItem.window;
-    }
-
     public void Start()
     {
         startMenu = GetComponentInParent<StartMenuScript>();

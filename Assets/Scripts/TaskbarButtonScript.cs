@@ -24,10 +24,6 @@ public class TaskbarButtonScript : ButtonScript, IPointerClickHandler
     void Start()
     {
         transform.SetParent(GameObject.Find("TaskbarObjects").transform);
-        if (window == null)
-        {
-            window = GameObject.Find("Window(Clone)");
-        }
 
         WindowScript windowScript = window.GetComponent<WindowScript>();
         taskbarImage = transform.GetChild(1).GetComponentInChildren<Image>();
@@ -68,6 +64,13 @@ public class TaskbarButtonScript : ButtonScript, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        WindowScript windowScript = window.GetComponent<WindowScript>();
+
         window.transform.SetAsLastSibling();
+        if (windowScript.minimised)
+        {
+            window.SetActive(true);
+            windowScript.minimised = false;
+        }
     }
 }

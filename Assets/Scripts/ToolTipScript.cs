@@ -7,6 +7,7 @@ public class ToolTipScript : MonoBehaviour
 {
     public static ToolTipScript instance;
 
+    Image image;
     Text toolTipText;
     RectTransform backgroundRectTransform;
 
@@ -15,13 +16,16 @@ public class ToolTipScript : MonoBehaviour
     void Awake()
     {
         instance = this;
-        toolTipText = GetComponentInChildren<Image>().GetComponentInChildren<Text>();
-        backgroundRectTransform = GetComponentInChildren<Image>().GetComponentInParent<RectTransform>();
+        image = GetComponentInChildren<Image>();
+        toolTipText = image.GetComponentInChildren<Text>();
+        backgroundRectTransform = image.GetComponentInParent<RectTransform>();
         HideToolTip();
     }
 
     void Update()
     {
+        image.color = ThemeManager.themeManagerInstance.toolTipColour;
+
         Vector2 localPoint;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(transform.parent as RectTransform, Input.mousePosition + toolTipOffset, null, out localPoint);
         transform.localPosition = localPoint;

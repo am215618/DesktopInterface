@@ -16,7 +16,7 @@ public class CursorScript : MonoBehaviour
         canvas = transform.parent.GetComponent<Canvas>();
         outline = transform.GetChild(0).GetComponent<Image>();
 
-        if (cursorColour.r < 0.5f && cursorColour.g < 0.5f && cursorColour.b < 0.5f)
+        if (cursorColour.r <= 0.5f && cursorColour.g <= 0.5f && cursorColour.b <= 0.5f)
         {
             outline.color = Color.white;
         }
@@ -36,7 +36,7 @@ public class CursorScript : MonoBehaviour
         Cursor.visible = false;
         cursorColour = ThemeManager.themeManagerInstance.cursorColour;
 
-        if ((cursorColour.r < 0.5f && cursorColour.g < 0.5f && cursorColour.b < 0.5f))
+        if (cursorColour.r <= 0.5f && cursorColour.g <= 0.5f && cursorColour.b <= 0.5f)
         {
             outline.color = Color.white;
         }
