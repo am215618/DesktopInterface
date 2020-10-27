@@ -15,7 +15,9 @@ public class ThemeManager : MonoBehaviour
     #endregion
 
     public Canvas ui;
+    public Canvas cursorCanvas;
 
+    public GameObject cursor;
     GameObject taskbar;
     [SerializeField] Image[] taskbarImages;
     [SerializeField] Text[] taskbarTexts;
@@ -23,34 +25,28 @@ public class ThemeManager : MonoBehaviour
     public Color backgroundColour;
     //public Color titleBarColour;
     public Color TaskbarColour;
+    public Color cursorColour;
 
     private void OnValidate()
     {
         taskbar = GameObject.Find("Taskbar");
+        cursor = GameObject.Find("Cursor");
 
         Camera.main.backgroundColor = backgroundColour;
+        cursor.GetComponent<Image>().color = cursorColour;
         UpdateTheme();
     }
 
     void Start()
     {
         taskbar = GameObject.Find("Taskbar");
+        cursor = GameObject.Find("Cursor");
 
         Camera.main.backgroundColor = backgroundColour;
+        cursor.GetComponent<Image>().color = cursorColour;
         UpdateTheme();
     }
 
-    void LateUpdate()
-    {
-        
-    }
-
-    /*public void OpenStartMenu()
-    {
-        taskbarImages = taskbar.GetComponentsInChildren<Image>();
-    }*/
-
-       
     public void UpdateTheme()
     {
         taskbarImages = taskbar.GetComponentsInChildren<Image>();
@@ -74,10 +70,5 @@ public class ThemeManager : MonoBehaviour
                 taskbarTexts[i].color = Color.black;
             }
         }
-    }
-
-    public void SetTheme()
-    {
-
     }
 }

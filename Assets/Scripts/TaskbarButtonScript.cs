@@ -22,7 +22,7 @@ public class TaskbarButtonScript : ButtonScript
     // Start is called before the first frame update
     void Start()
     {
-        transform.SetParent(GameObject.Find("Canvas").transform);
+        transform.SetParent(GameObject.Find("TaskbarObjects").transform);
         if (window == null)
         {
             window = GameObject.Find("Window(Clone)");

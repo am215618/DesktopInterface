@@ -5,17 +5,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class ButtonScript : MonoBehaviour, IPointerClickHandler
+public class ButtonScript : MonoBehaviour
 {
     protected Image buttonImage;
     protected Text buttonText;
 
     protected bool buttonPressed;
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        
-    }
 
     void OnValidate()
     {

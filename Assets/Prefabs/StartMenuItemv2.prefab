@@ -132,7 +132,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startMenuItem: {fileID: 0}
   window: {fileID: 0}
-  toggle: {fileID: 4814516758557329656}
 --- !u!114 &4814516758557329656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,6 +262,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4814516759255950420}
+  - component: {fileID: 5826799309354136728}
   m_Layer: 5
   m_Name: StartMenuItemv2
   m_TagString: Untagged
@@ -290,6 +290,26 @@ RectTransform:
   m_AnchoredPosition: {x: 8.5, y: 0}
   m_SizeDelta: {x: 0, y: 28}
   m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &5826799309354136728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4814516759255950419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08d91299a5238c347a2f237cdaf626d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startMenuItems:
+  - {fileID: 11400000, guid: e39d605bf19273b43a2461c58722e04f, type: 2}
+  - {fileID: 11400000, guid: e873e4ee0458e3e4492ae1e9901755ae, type: 2}
+  - {fileID: 11400000, guid: b613aa40e70101b4385caacbcc66f0c0, type: 2}
+  buttons:
+  - {fileID: 4814516758557329669}
+  - {fileID: 4814516758557329669}
+  - {fileID: 4814516758557329669}
 --- !u!1 &4814516759297947907
 GameObject:
   m_ObjectHideFlags: 0

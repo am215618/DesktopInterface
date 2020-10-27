@@ -6,10 +6,12 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEditor;
 
-public class WindowScript : MonoBehaviour
+public class WindowScript : MonoBehaviour, IPointerClickHandler
 {
     //public Window window;
     RectTransform rect;
+
+    public bool spawnTaskbarObj;
 
     public Image titleBarIcon;
     public Text titleBarText;
@@ -18,21 +20,6 @@ public class WindowScript : MonoBehaviour
     GameObject instancedTaskbarObj;
 
     [HideInInspector] public bool activeWindow = false;
-
-    /*private void OnValidate()
-    {
-        rect = GetComponent<RectTransform>();
-        titleBarIcon = transform.GetChild(1).GetComponent<Image>();
-        titleBarText = GetComponentInChildren<Text>();
-
-        titleBarIcon.sprite = window.titleBarSprite;
-        titleBarText.text = window.titleBarText;
-    }*/
-    /*[MenuItem("Window")]
-    public static void CreateWindow()
-    {
-
-    }*/
 
     private void Awake()
     {
@@ -55,9 +42,11 @@ public class WindowScript : MonoBehaviour
         //    titleBarIcon.sprite = window.titleBarSprite;
         //}
         //titleBarText.text = window.titleBarText;
-
-        instancedTaskbarObj = Instantiate(taskbarObject);
-        instancedTaskbarObj.GetComponent<TaskbarButtonScript>().window = this.gameObject;
+        if (spawnTaskbarObj)
+        {
+            instancedTaskbarObj = Instantiate(taskbarObject);
+            instancedTaskbarObj.GetComponent<TaskbarButtonScript>().window = this.gameObject;
+        }
         //instancedTaskbarObj.GetComponent<TaskbarButtonScript>().OnWindowActive();
     }
 
@@ -84,5 +73,10 @@ public class WindowScript : MonoBehaviour
         Destroy(instancedTaskbarObj);
         Destroy(gameObject);
         //taskbarObject.GetComponent<TaskbarButtonScript>().OnWindowClosed();
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        transform.SetAsLastSibling();
     }
 }

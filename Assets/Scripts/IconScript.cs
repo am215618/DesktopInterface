@@ -10,6 +10,7 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     public Icon icon;
     Image iconImage;
     Text iconText;
+    Canvas canvas;
 
     GameObject draggingIcon;
     RectTransform draggingTransform;
@@ -32,6 +33,8 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         iconImage = GetComponentInChildren<Image>();
         iconText = GetComponentInChildren<Text>();
 
+        //canvas = ThemeManager.themeManagerInstance.ui;
+
         iconImage.sprite = icon.iconSprite;
         iconText.text = icon.iconName;
     }
@@ -41,6 +44,8 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     {
         iconImage = GetComponentInChildren<Image>();
         iconText = GetComponentInChildren<Text>();
+
+        canvas = ThemeManager.themeManagerInstance.ui;
 
         iconImage.sprite = icon.iconSprite;
         iconText.text = icon.iconName;
@@ -55,11 +60,6 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        //We check to find the canvas of the User Interface
-        var canvas = FindInParents<Canvas>(gameObject);
-        if (canvas == null)
-            return;
-
         draggingIcon = Instantiate(this.gameObject);
 
         draggingIcon.transform.SetParent(canvas.transform, false);
@@ -76,34 +76,12 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         //image.GetComponentInChildren<Image>().rectTransform.localPosition = new Vector3(-image.GetComponentInChildren<Image>().rectTransform.localPosition.x, -image.GetComponentInChildren<Image>().rectTransform.localPosition.y, 0);
         image.GetComponentInChildren<Text>().color = Color.white;
 
-        //image.SetNativeSize();
-
-        if (isBeingHeld)
-            draggingTransform = transform as RectTransform;
-        else
-            draggingTransform = canvas.transform as RectTransform;
-
-        SetDraggedPosition(eventData);
+        draggingIcon.GetComponent<RectTransform>().anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
     public void OnDrag(PointerEventData data)
     {
-        if (draggingIcon != null)
-            SetDraggedPosition(data);
-    }
-
-    private void SetDraggedPosition(PointerEventData data)
-    {
-        if (isBeingHeld && data.pointerEnter != null && data.pointerEnter.transform as RectTransform != null)
-            draggingTransform = data.pointerEnter.transform as RectTransform;
-
-        var rt = draggingIcon.GetComponent<RectTransform>();
-        Vector3 globalMousePos;
-        if (RectTransformUtility.ScreenPointToWorldPointInRectangle(draggingTransform, data.position, data.pressEventCamera, out globalMousePos))
-        {
-            rt.position = globalMousePos;
-            rt.rotation = draggingTransform.rotation;
-        }
+        draggingIcon.GetComponent<RectTransform>().anchoredPosition += data.delta / canvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -112,23 +90,6 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
         if (draggingIcon != null)
             Destroy(draggingIcon);
-    }
-
-    static public T FindInParents<T>(GameObject go) where T : Component
-    {
-        if (go == null) return null;
-        var comp = go.GetComponent<T>();
-
-        if (comp != null)
-            return comp;
-
-        Transform t = go.transform.parent;
-        while (t != null && comp == null)
-        {
-            comp = t.gameObject.GetComponent<T>();
-            t = t.parent;
-        }
-        return comp;
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -140,7 +101,7 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
         if (clickCount == openOnClickCount)
         {
-            Instantiate(window, transform.parent);
+            Instantiate(window, transform.parent.parent);
             clickCount = 0;
         }
     }

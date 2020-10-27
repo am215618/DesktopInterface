@@ -9,16 +9,41 @@ public class NotificationAreaScript : MonoBehaviour
     public bool displaySeconds;
     RectTransform rectTransform;
     Text clockText;
-    RectTransform clockRect;
+    RectTransform objectsRect;
+    public GameObject NotificationsSpace;
+    int numberOfNotifications;
+    bool isChecked = false;
 
     private void Start()
     {
         rectTransform = GetComponent<RectTransform>();
         clockText = GetComponentInChildren<Text>();
-        clockRect = clockText.gameObject.GetComponent<RectTransform>();
+        objectsRect = clockText.gameObject.GetComponent<RectTransform>();
     }
 
     private void Update()
+    {
+        UpdateTime();
+    }
+
+    void CheckDisplaySeconds()
+    {
+        if (displaySeconds)
+        {
+            //rectTransform.anchoredPosition = new Vector3(-38, 13.5f, 0);
+            rectTransform.sizeDelta = new Vector2((67 + NotificationsSpace.GetComponent<RectTransform>().rect.width), 24);
+            NotificationsSpace.GetComponent<RectTransform>().anchoredPosition = new Vector2(-61 - (NotificationsSpace.transform.childCount * 10), 0);
+        }
+        else if (!displaySeconds)
+        {
+            //rectTransform.anchoredPosition = new Vector3(-28, 13.5f, 0);
+            //rectTransform.sizeDelta = new Vector2(880 - (20 * numberOfNotifications), 0);
+            rectTransform.sizeDelta = new Vector2((47 + NotificationsSpace.GetComponent<RectTransform>().rect.width), 24);
+            NotificationsSpace.GetComponent<RectTransform>().anchoredPosition = new Vector2(-41 - (NotificationsSpace.transform.childCount * 10), 0);
+        }
+    }
+    
+    void UpdateTime()
     {
         DateTime time = DateTime.Now;
 
@@ -29,21 +54,12 @@ public class NotificationAreaScript : MonoBehaviour
         if (displaySeconds)
         {
             clockText.text = hour + ":" + minute + ":" + second;
-            clockRect.sizeDelta = new Vector2(57, clockRect.rect.height);
-            clockRect.anchoredPosition = new Vector2(-32, 0);
-            rectTransform.anchoredPosition = new Vector3(-38, 13.5f, 0);
         }
         else
         {
             clockText.text = hour + ":" + minute;
-            clockRect.sizeDelta = new Vector2(37, clockRect.rect.height);
-            clockRect.anchoredPosition = new Vector2(-22, 0);
-            rectTransform.anchoredPosition = new Vector3(-28, 13.5f, 0);
         }
-
-        rectTransform.sizeDelta = new Vector2
-            (clockRect.rect.width + 10,
-             rectTransform.rect.height);
+        CheckDisplaySeconds();
     }
 
     string zero(int x)

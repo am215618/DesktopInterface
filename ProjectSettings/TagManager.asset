@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Window
   - Icon
+  - Cursor
   layers:
   - Default
   - TransparentFX
@@ -36,10 +37,16 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - context menu
   - Shutdown Box
+  - Cursor
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Cursor
+    uniqueID: 399382805
+    locked: 0
+  - name: ContextMenu
+    uniqueID: 2917456897
     locked: 0
