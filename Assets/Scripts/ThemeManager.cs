@@ -26,8 +26,11 @@ public class ThemeManager : MonoBehaviour
     Image[] taskbarImages;
     Text[] taskbarTexts;
 
+    WindowScript activeWindow;
+
     public Color backgroundColour;
-    //public Color titleBarColour;
+    public Color activeTitleBarColour;
+    public Color inactiveTitleBarColour;
     public Color TaskbarColour;
     public Color cursorColour;
     public Color toolTipColour;
@@ -93,7 +96,23 @@ public class ThemeManager : MonoBehaviour
                 taskbarTexts[i].color = Color.black;
             }
         }
+    }
 
-        
+    public void SetActiveWindow(WindowScript openWindow)
+    {
+        activeWindow.activeWindow = false;
+        activeWindow = openWindow;
+        activeWindow.activeWindow = true;
+        activeWindow.SetWindowActivity();
+    }
+
+    public void OpenWindow(WindowScript openWindow)
+    {
+        if(activeWindow != null)
+        {
+            activeWindow.activeWindow = false;
+        }
+        activeWindow = openWindow;
+        SetActiveWindow(openWindow);
     }
 }

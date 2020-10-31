@@ -1024,6 +1024,8 @@ MonoBehaviour:
   cursor: {fileID: 1765060779}
   taskbar: {fileID: 1166796792}
   backgroundColour: {r: 0, g: 0.49803922, b: 0.49803922, a: 1}
+  activeTitleBarColour: {r: 0, g: 0, b: 0.49803922, a: 1}
+  inactiveTitleBarColour: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
   TaskbarColour: {r: 1, g: 1, b: 1, a: 1}
   cursorColour: {r: 1, g: 1, b: 0, a: 1}
   toolTipColour: {r: 0.9411765, g: 0.9411765, b: 0.2901961, a: 1}
@@ -2373,7 +2375,7 @@ PrefabInstance:
     - target: {fileID: 155057661505044305, guid: 819af43d032b2364c9abd47264e3736c,
         type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.41568628
       objectReference: {fileID: 0}
     - target: {fileID: 155057661505044305, guid: 819af43d032b2364c9abd47264e3736c,
         type: 3}
@@ -2381,6 +2383,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 714fd135cab74b34195ae4468bfabadf,
         type: 3}
+    - target: {fileID: 155057661505044305, guid: 819af43d032b2364c9abd47264e3736c,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.6784314
+      objectReference: {fileID: 0}
     - target: {fileID: 155057661505044307, guid: 819af43d032b2364c9abd47264e3736c,
         type: 3}
       propertyPath: m_LocalPosition.x

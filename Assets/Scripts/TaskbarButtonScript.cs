@@ -67,6 +67,7 @@ public class TaskbarButtonScript : ButtonScript, IPointerClickHandler
         WindowScript windowScript = window.GetComponent<WindowScript>();
 
         window.transform.SetAsLastSibling();
+        themeManager.SetActiveWindow(windowScript);
         if (windowScript.minimised)
         {
             window.SetActive(true);

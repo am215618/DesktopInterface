@@ -106,6 +106,7 @@ public class ColourPicker : MonoBehaviour
                 {
                     cursorOutline.GetComponent<Image>().color = Color.black;
                 }
+                ThemeManager.instance.cursorColour = currentColour;
                 cursorOutline.SetActive(true);
                 break;
         }

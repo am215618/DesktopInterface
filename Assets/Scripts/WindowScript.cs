@@ -6,13 +6,14 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEditor;
 
-public class WindowScript : MonoBehaviour, IPointerClickHandler
+public class WindowScript : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
 {
     //public Window window;
     RectTransform rect;
 
     public bool spawnTaskbarObj;
 
+    public GameObject titleBar;
     public Image titleBarIcon;
     public Text titleBarText;
 
@@ -41,9 +42,45 @@ public class WindowScript : MonoBehaviour, IPointerClickHandler
             instancedTaskbarObj = Instantiate(taskbarObject);
             instancedTaskbarObj.GetComponent<TaskbarButtonScript>().window = this.gameObject;
         }
-
-        maximiseButton.sprite = ThemeManager.instance.maximiseButton;
+        ThemeManager.instance.OpenWindow(this);
+        if (GetComponentInChildren<TitleBarScript>() != null)
+            maximiseButton.sprite = ThemeManager.instance.maximiseButton;
         //instancedTaskbarObj.GetComponent<TaskbarButtonScript>().OnWindowActive();
+    }
+
+    void Update()
+    {
+        if (spawnTaskbarObj)
+        {
+            if (activeWindow)
+            {
+                GetComponentInChildren<TitleBarScript>().GetComponent<Image>().color = ThemeManager.instance.activeTitleBarColour;
+            }
+            else
+            {
+                GetComponentInChildren<TitleBarScript>().GetComponent<Image>().color = ThemeManager.instance.inactiveTitleBarColour;
+            }
+
+            if (ThemeManager.instance.activeTitleBarColour.r <= 0.5f && ThemeManager.instance.activeTitleBarColour.g <= 0.5f && ThemeManager.instance.activeTitleBarColour.b <= 0.5f)
+                GetComponentInChildren<TitleBarScript>().GetComponentInChildren<Text>().color = Color.white;
+            else
+                GetComponentInChildren<TitleBarScript>().GetComponentInChildren<Text>().color = Color.black;
+        }
+    }
+
+    public void SetWindowActivity()
+    {
+        if (GetComponentInChildren<TitleBarScript>() != null)
+        {
+            if (activeWindow)
+            {
+                GetComponentInChildren<TitleBarScript>().GetComponent<Image>().color = ThemeManager.instance.activeTitleBarColour;
+            }
+            else
+            {
+                GetComponentInChildren<TitleBarScript>().GetComponent<Image>().color = ThemeManager.instance.inactiveTitleBarColour;
+            }
+        }
     }
 
     public void Minimise()
@@ -88,5 +125,11 @@ public class WindowScript : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         transform.SetAsLastSibling();
+        ThemeManager.instance.SetActiveWindow(this);
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        ThemeManager.instance.SetActiveWindow(this);
     }
 }
