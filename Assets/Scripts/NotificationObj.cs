@@ -47,8 +47,8 @@ public class NotificationObj : MonoBehaviour, IPointerEnterHandler, IPointerExit
         popUpScript.description.text = notification.notificationText;
         popUpScript.icon.sprite = notification.notificationSprite;
 
-        tmpPopup.GetComponent<Image>().color = ThemeManager.themeManagerInstance.toolTipColour;
-        tmpPopup.transform.GetChild(0).GetComponent<Image>().color = ThemeManager.themeManagerInstance.toolTipColour;
+        tmpPopup.GetComponent<Image>().color = ThemeManager.instance.toolTipColour;
+        tmpPopup.transform.GetChild(0).GetComponent<Image>().color = ThemeManager.instance.toolTipColour;
 
         yield return new WaitForSeconds(5f);
         Destroy(tmpPopup);

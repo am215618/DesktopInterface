@@ -972,7 +972,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 30000
+  m_SortingOrder: 29999
   m_TargetDisplay: 0
 --- !u!1 &781304250
 GameObject:
@@ -984,6 +984,7 @@ GameObject:
   m_Component:
   - component: {fileID: 781304251}
   - component: {fileID: 781304252}
+  - component: {fileID: 781304253}
   m_Layer: 0
   m_Name: ThemeManager
   m_TagString: Untagged
@@ -1029,6 +1030,14 @@ MonoBehaviour:
   SelectedColour: {r: 0, g: 0, b: 0.49803922, a: 1}
   maximiseButton: {fileID: 21300000, guid: 4871e3e440e32794387cd64745f8fe95, type: 3}
   unmaximiseButton: {fileID: 21300000, guid: 3642f15eeff33b043890776a07b456e9, type: 3}
+--- !u!81 &781304253
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781304250}
+  m_Enabled: 1
 --- !u!1001 &829074603
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1193,6 +1202,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: Folder
+      objectReference: {fileID: 0}
+    - target: {fileID: 8673624042268417512, guid: 7b7b47da552c80a47a88e751c59353f9,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8673624042268417512, guid: 7b7b47da552c80a47a88e751c59353f9,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8673624042268417512, guid: 7b7b47da552c80a47a88e751c59353f9,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8673624042268417512, guid: 7b7b47da552c80a47a88e751c59353f9,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8673624042268417512, guid: 7b7b47da552c80a47a88e751c59353f9,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b7b47da552c80a47a88e751c59353f9, type: 3}
@@ -1742,16 +1776,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1605264399}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1808379095}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 335, y: -225}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -145, y: 55}
   m_SizeDelta: {x: 280, y: 44}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1605264401
@@ -1897,9 +1931,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 29999
+  m_SortingOrder: 29998
   m_TargetDisplay: 0
 --- !u!224 &1808379095
 RectTransform:
@@ -2731,6 +2765,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: Notes
+      objectReference: {fileID: 0}
+    - target: {fileID: 8673624042268417512, guid: 7b7b47da552c80a47a88e751c59353f9,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8673624042268417512, guid: 7b7b47da552c80a47a88e751c59353f9,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8673624042268417512, guid: 7b7b47da552c80a47a88e751c59353f9,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8673624042268417512, guid: 7b7b47da552c80a47a88e751c59353f9,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8673624042268417512, guid: 7b7b47da552c80a47a88e751c59353f9,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b7b47da552c80a47a88e751c59353f9, type: 3}

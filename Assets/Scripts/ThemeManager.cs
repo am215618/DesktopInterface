@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class ThemeManager : MonoBehaviour
 {
     #region Singleton
-    public static ThemeManager themeManagerInstance;
+    public static ThemeManager instance;
 
     void Awake()
     {
-        themeManagerInstance = this;
+        instance = this;
     }
     #endregion
 

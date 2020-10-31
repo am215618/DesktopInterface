@@ -14,7 +14,7 @@ public class TitleBarScript : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
     {
         windowScript = GetComponentInParent<WindowScript>();
         draggingTransform = transform.parent.GetComponentInParent<RectTransform>();
-        canvas = ThemeManager.themeManagerInstance.ui;
+        canvas = ThemeManager.instance.ui;
     }
 
     void Update()

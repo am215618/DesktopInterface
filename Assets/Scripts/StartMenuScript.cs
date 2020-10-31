@@ -13,7 +13,7 @@ public class StartMenuScript : MonoBehaviour
 
     private void Awake()
     {
-        themeManager = ThemeManager.themeManagerInstance;
+        themeManager = ThemeManager.instance;
     }
 
     private void OnValidate()

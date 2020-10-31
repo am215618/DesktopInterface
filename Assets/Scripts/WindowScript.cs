@@ -42,13 +42,8 @@ public class WindowScript : MonoBehaviour, IPointerClickHandler
             instancedTaskbarObj.GetComponent<TaskbarButtonScript>().window = this.gameObject;
         }
 
-        maximiseButton.sprite = ThemeManager.themeManagerInstance.maximiseButton;
+        maximiseButton.sprite = ThemeManager.instance.maximiseButton;
         //instancedTaskbarObj.GetComponent<TaskbarButtonScript>().OnWindowActive();
-    }
-
-    private void OnDeselect(BaseEventData eventData)
-    {
-        //instancedTaskbarObj.GetComponent<TaskbarButtonScript>().OnWindowInactive();
     }
 
     public void Minimise()
@@ -62,7 +57,7 @@ public class WindowScript : MonoBehaviour, IPointerClickHandler
         if (!maximised)
         {
             originalWindowSize = rect.sizeDelta;
-            maximiseButton.sprite = ThemeManager.themeManagerInstance.unmaximiseButton;
+            maximiseButton.sprite = ThemeManager.instance.unmaximiseButton;
 
             RectTransform iconSpace = GameObject.Find("IconSpace").GetComponent<RectTransform>();
 
@@ -74,7 +69,7 @@ public class WindowScript : MonoBehaviour, IPointerClickHandler
         else
         {
             rect.sizeDelta = originalWindowSize;
-            maximiseButton.sprite = ThemeManager.themeManagerInstance.maximiseButton;
+            maximiseButton.sprite = ThemeManager.instance.maximiseButton;
             maximised = false;
         }
         //teleport it to the top left

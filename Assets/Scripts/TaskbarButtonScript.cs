@@ -17,7 +17,7 @@ public class TaskbarButtonScript : ButtonScript, IPointerClickHandler
 
     private void Awake()
     {
-        themeManager = ThemeManager.themeManagerInstance;
+        themeManager = ThemeManager.instance;
     }
 
     // Start is called before the first frame update

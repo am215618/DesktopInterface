@@ -24,7 +24,7 @@ public class ToolTipScript : MonoBehaviour
 
     void Update()
     {
-        image.color = ThemeManager.themeManagerInstance.toolTipColour;
+        image.color = ThemeManager.instance.toolTipColour;
 
         Vector2 localPoint;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(transform.parent as RectTransform, Input.mousePosition + toolTipOffset, null, out localPoint);

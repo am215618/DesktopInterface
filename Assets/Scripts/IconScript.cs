@@ -27,28 +27,13 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     float clickDelay;
     public float maxClickDelay = 1f;
-
-    //OnValidate will modify the private variables in the editor.
-    void OnValidate()
-    {
-        iconImage = transform.GetChild(0).GetComponentInChildren<Image>();
-        iconText = GetComponentInChildren<Text>();
-
-        //canvas = ThemeManager.themeManagerInstance.ui;
-
-        iconImage.sprite = icon.iconSprite;
-        iconText.text = icon.iconName;
-
-        window = icon.window;
-    }
-
     // Start is called before the first frame update
     void Start()
     {
         iconImage = transform.GetChild(0).GetComponentInChildren<Image>();
         iconText = GetComponentInChildren<Text>();
 
-        canvas = ThemeManager.themeManagerInstance.ui;
+        canvas = ThemeManager.instance.ui;
 
         iconImage.sprite = icon.iconSprite;
         iconText.text = icon.iconName;
@@ -77,7 +62,7 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
             image.color = new Color(0f, 0f, 0.5f, 1f);
             image.GetComponentInChildren<Image>().sprite = null;
-            image.GetComponentInChildren<Image>().color = ThemeManager.themeManagerInstance.SelectedColour;
+            image.GetComponentInChildren<Image>().color = ThemeManager.instance.SelectedColour;
             image.GetComponentInChildren<Text>().color = Color.white;
 
             draggingIcon.GetComponent<RectTransform>().anchoredPosition += eventData.delta / canvas.scaleFactor;
@@ -110,7 +95,7 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
         if(clickCount == 1)
         {
-            GetComponent<Image>().color = ThemeManager.themeManagerInstance.SelectedColour;
+            GetComponent<Image>().color = ThemeManager.instance.SelectedColour;
         }
         else if (clickCount == openOnClickCount)
         {

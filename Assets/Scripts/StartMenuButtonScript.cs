@@ -20,6 +20,6 @@ public class StartMenuButtonScript : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Instantiate(window, transform.parent.parent.parent.parent.parent.parent);
+        Instantiate(window, ThemeManager.instance.ui.transform);
     }
 }
