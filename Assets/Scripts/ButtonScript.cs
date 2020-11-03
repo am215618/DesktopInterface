@@ -23,9 +23,4 @@ public class ButtonScript : MonoBehaviour
         buttonImage = GetComponent<Image>();
         buttonText = GetComponentInChildren<Text>();
     }
-
-    void Update()
-    {
-
-    }
 }

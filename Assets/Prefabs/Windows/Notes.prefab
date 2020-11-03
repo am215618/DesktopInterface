@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4849594476819217481}
   - component: {fileID: 8200121450971646869}
   m_Layer: 5
-  m_Name: WindowContent
+  m_Name: WindowContents
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnTaskbarObj: 1
+  titleBar: {fileID: 0}
   titleBarIcon: {fileID: 1198395963131636339}
   titleBarText: {fileID: 1198395963069549166}
   taskbarObject: {fileID: 8516889691892751072, guid: 5db51fb469928924a808bd1760ee2ee7,

@@ -101,12 +101,15 @@ public class WindowScript : MonoBehaviour, IPointerClickHandler, IPointerDownHan
             rect.sizeDelta = new Vector2(Camera.main.pixelWidth, Mathf.Round(iconSpace.rect.height));
             rect.position = new Vector3(rect.rect.width / 2, Mathf.Round(-(rect.rect.height / 2) + Camera.main.pixelHeight));
 
+            GetComponentInChildren<TitleBarScript>().enabled = false;
+
             maximised = true;
         }
         else
         {
             rect.sizeDelta = originalWindowSize;
             maximiseButton.sprite = ThemeManager.instance.maximiseButton;
+            GetComponentInChildren<TitleBarScript>().enabled = true;
             maximised = false;
         }
         //teleport it to the top left

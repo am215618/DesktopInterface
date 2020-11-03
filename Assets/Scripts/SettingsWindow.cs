@@ -23,8 +23,16 @@ public class SettingsWindow : MonoBehaviour
     public Dropdown resolutionDropdown;
 
     Resolution[] resolutions;
+    [SerializeField] ColourPicker[] colourPickers;
 
-    // Start is called before the first frame update
+    [Space]
+    public GameObject aboutScreen;
+
+    private void OnValidate()
+    {
+        colourPickers = themeSettingsArea.GetComponentsInChildren<ColourPicker>();
+    }
+
     void Start()
     {
         themeManager = ThemeManager.instance;
@@ -69,12 +77,21 @@ public class SettingsWindow : MonoBehaviour
     {
         themeSettingsArea.SetActive(true);
         gameSettingsArea.SetActive(false);
+        aboutScreen.SetActive(false);
     }
 
     public void GameSettings()
     {
         themeSettingsArea.SetActive(false);
         gameSettingsArea.SetActive(true);
+        aboutScreen.SetActive(false);
+    }
+
+    public void AboutScreen()
+    {
+        themeSettingsArea.SetActive(false);
+        gameSettingsArea.SetActive(false);
+        aboutScreen.SetActive(true);
     }
 
     public void SetVolume(float volume)
@@ -101,5 +118,19 @@ public class SettingsWindow : MonoBehaviour
     {
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+    }
+
+    public void ApplyAllThemeSettings()
+    {
+        colourPickers = themeSettingsArea.GetComponentsInChildren<ColourPicker>();
+        for (int i = 0; i < colourPickers.Length; i++)
+        {
+            colourPickers[i].ApplyColour();
+        }
+    }
+
+    public void DeliberateCrash()
+    {
+        
     }
 }

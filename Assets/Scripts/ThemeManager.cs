@@ -39,6 +39,8 @@ public class ThemeManager : MonoBehaviour
     public Sprite maximiseButton;
     public Sprite unmaximiseButton;
 
+    public int maxClickDelay;
+
     private void OnValidate()
     {
         Camera.main.backgroundColor = backgroundColour;
@@ -65,6 +67,8 @@ public class ThemeManager : MonoBehaviour
 
     public void UpdateTheme()
     {
+        Camera.main.backgroundColor = backgroundColour;
+
         for (int i = 0; i < iconTexts.Length; i++)
         {
             if (backgroundColour.r <= 0.5f && backgroundColour.g <= 0.5f && backgroundColour.b <= 0.5f)

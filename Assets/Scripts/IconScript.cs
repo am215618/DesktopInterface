@@ -15,9 +15,6 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     GameObject draggingIcon;
     RectTransform draggingTransform;
 
-    public float startingPositionX;
-    public float startingPositionY;
-
     [SerializeField] GameObject window;
 
     public bool canDrag;
@@ -26,10 +23,12 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     int openOnClickCount = 2;
 
     float clickDelay;
-    public float maxClickDelay = 1f;
+    float maxClickDelay;
     // Start is called before the first frame update
     void Start()
     {
+        maxClickDelay = ThemeManager.instance.maxClickDelay;
+
         iconImage = transform.GetChild(0).GetComponentInChildren<Image>();
         iconText = GetComponentInChildren<Text>();
 

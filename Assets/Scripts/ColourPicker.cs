@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ColourPicker : MonoBehaviour
 {
-    public enum ComponentChanging { Cursor, TitleBar, Taskbar, Background, Tooltip, Selected }
+    public enum ComponentChanging { Cursor, ActiveTitleBar, InactiveTitleBar, Taskbar, Background, Tooltip, Selected }
     public ComponentChanging changingComponent;
 
     //Get the image that it is assigned to.
@@ -23,10 +23,9 @@ public class ColourPicker : MonoBehaviour
     [SerializeField] Slider[] sliders;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         sliders = GetComponentsInChildren<Slider>();
-        SetColour();
 
         switch (changingComponent)
         {
@@ -38,25 +37,63 @@ public class ColourPicker : MonoBehaviour
                 green = ThemeManager.instance.cursorColour.g;
                 blue = ThemeManager.instance.cursorColour.b;
                 alpha = ThemeManager.instance.cursorColour.a;
-
-                sliders[0].value = red;
-                sliders[1].value = green;
-                sliders[2].value = blue;
-                sliders[3].value = alpha;
-
-                SetColour();
                 break;
-            case ComponentChanging.TitleBar:
+            case ComponentChanging.ActiveTitleBar:
+                currentColour = ThemeManager.instance.activeTitleBarColour;
+
+                red = ThemeManager.instance.activeTitleBarColour.r;
+                green = ThemeManager.instance.activeTitleBarColour.g;
+                blue = ThemeManager.instance.activeTitleBarColour.b;
+                alpha = ThemeManager.instance.activeTitleBarColour.a;
+                break;
+            case ComponentChanging.InactiveTitleBar:
+                currentColour = ThemeManager.instance.inactiveTitleBarColour;
+
+                red = ThemeManager.instance.inactiveTitleBarColour.r;
+                green = ThemeManager.instance.inactiveTitleBarColour.g;
+                blue = ThemeManager.instance.inactiveTitleBarColour.b;
+                alpha = ThemeManager.instance.inactiveTitleBarColour.a;
                 break;
             case ComponentChanging.Taskbar:
+                currentColour = ThemeManager.instance.TaskbarColour;
+
+                red = ThemeManager.instance.TaskbarColour.r;
+                green = ThemeManager.instance.TaskbarColour.g;
+                blue = ThemeManager.instance.TaskbarColour.b;
+                alpha = ThemeManager.instance.TaskbarColour.a;
                 break;
             case ComponentChanging.Background:
+                currentColour = ThemeManager.instance.backgroundColour;
+
+                red = ThemeManager.instance.backgroundColour.r;
+                green = ThemeManager.instance.backgroundColour.g;
+                blue = ThemeManager.instance.backgroundColour.b;
+                alpha = ThemeManager.instance.backgroundColour.a;
                 break;
             case ComponentChanging.Tooltip:
+                currentColour = ThemeManager.instance.toolTipColour;
+
+                red = ThemeManager.instance.toolTipColour.r;
+                green = ThemeManager.instance.toolTipColour.g;
+                blue = ThemeManager.instance.toolTipColour.b;
+                alpha = ThemeManager.instance.toolTipColour.a;
                 break;
             case ComponentChanging.Selected:
+                currentColour = ThemeManager.instance.SelectedColour;
+
+                red = ThemeManager.instance.SelectedColour.r;
+                green = ThemeManager.instance.SelectedColour.g;
+                blue = ThemeManager.instance.SelectedColour.b;
+                alpha = ThemeManager.instance.SelectedColour.a;
                 break;
         }
+
+        sliders[0].value = red;
+        sliders[1].value = green;
+        sliders[2].value = blue;
+        sliders[3].value = alpha;
+
+        SetColour();
     }
 
     public void SetRed(float _red)
@@ -86,12 +123,17 @@ public class ColourPicker : MonoBehaviour
     void SetColour()
     {
         currentColour = new Color(red, green, blue, alpha);
-        image.color = currentColour;
+        if (image != null)
+        {
+            image.color = currentColour;
+        }
     }
 
     public void ApplyColour()
     {
-        applyToImage.color = currentColour;
+        if(applyToImage != null)
+            applyToImage.color = currentColour;
+
         switch (changingComponent)
         {
             case ComponentChanging.Cursor:
@@ -109,6 +151,32 @@ public class ColourPicker : MonoBehaviour
                 ThemeManager.instance.cursorColour = currentColour;
                 cursorOutline.SetActive(true);
                 break;
+
+            case ComponentChanging.ActiveTitleBar:
+                ThemeManager.instance.activeTitleBarColour = currentColour;
+                break;
+
+            case ComponentChanging.InactiveTitleBar:
+                ThemeManager.instance.inactiveTitleBarColour = currentColour;
+                break;
+
+            case ComponentChanging.Taskbar:
+                ThemeManager.instance.TaskbarColour = currentColour;
+                break;
+
+            case ComponentChanging.Background:
+                Camera.main.backgroundColor = currentColour;
+                ThemeManager.instance.backgroundColour = currentColour;
+                break;
+
+            case ComponentChanging.Tooltip:
+                ThemeManager.instance.toolTipColour = currentColour;
+                break;
+
+            case ComponentChanging.Selected:
+                ThemeManager.instance.SelectedColour = currentColour;
+                break;
+
         }
     }
 

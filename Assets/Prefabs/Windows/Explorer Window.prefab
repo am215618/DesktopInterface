@@ -119,7 +119,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 7461169269492164099}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.5933333
+  m_Size: 0.5366667
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -328,6 +328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnTaskbarObj: 1
+  titleBar: {fileID: 0}
   titleBarIcon: {fileID: 1198395963131636339}
   titleBarText: {fileID: 1198395963069549166}
   taskbarObject: {fileID: 8516889691892751072, guid: 5db51fb469928924a808bd1760ee2ee7,
@@ -1331,7 +1332,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 64, y: 64}
+  m_CellSize: {x: 68, y: 68}
   m_Spacing: {x: 5, y: 5}
   m_Constraint: 0
   m_ConstraintCount: 2
