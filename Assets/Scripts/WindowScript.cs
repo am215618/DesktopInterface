@@ -28,6 +28,7 @@ public class WindowScript : MonoBehaviour, IPointerClickHandler, IPointerDownHan
     Vector2 originalWindowSize;
 
     [HideInInspector] public bool activeWindow = false;
+    public bool destroyOnClose;
 
     private void Awake()
     {
@@ -44,28 +45,30 @@ public class WindowScript : MonoBehaviour, IPointerClickHandler, IPointerDownHan
         }
         ThemeManager.instance.OpenWindow(this);
         if (GetComponentInChildren<TitleBarScript>() != null)
-            maximiseButton.sprite = ThemeManager.instance.maximiseButton;
+        {
+            if (maximiseButton != null)
+            {
+                maximiseButton.sprite = ThemeManager.instance.maximiseButton;
+            }
+        }
         //instancedTaskbarObj.GetComponent<TaskbarButtonScript>().OnWindowActive();
     }
 
     void Update()
     {
-        if (spawnTaskbarObj)
+        if (activeWindow)
         {
-            if (activeWindow)
-            {
-                GetComponentInChildren<TitleBarScript>().GetComponent<Image>().color = ThemeManager.instance.activeTitleBarColour;
-            }
-            else
-            {
-                GetComponentInChildren<TitleBarScript>().GetComponent<Image>().color = ThemeManager.instance.inactiveTitleBarColour;
-            }
-
-            if (ThemeManager.instance.activeTitleBarColour.r <= 0.5f && ThemeManager.instance.activeTitleBarColour.g <= 0.5f && ThemeManager.instance.activeTitleBarColour.b <= 0.5f)
-                GetComponentInChildren<TitleBarScript>().GetComponentInChildren<Text>().color = Color.white;
-            else
-                GetComponentInChildren<TitleBarScript>().GetComponentInChildren<Text>().color = Color.black;
+            GetComponentInChildren<TitleBarScript>().GetComponent<Image>().color = ThemeManager.instance.activeTitleBarColour;
         }
+        else
+        {
+            GetComponentInChildren<TitleBarScript>().GetComponent<Image>().color = ThemeManager.instance.inactiveTitleBarColour;
+        }
+
+        if (ThemeManager.instance.activeTitleBarColour.r <= 0.5f && ThemeManager.instance.activeTitleBarColour.g <= 0.5f && ThemeManager.instance.activeTitleBarColour.b <= 0.5f)
+            GetComponentInChildren<TitleBarScript>().GetComponentInChildren<Text>().color = Color.white;
+        else
+            GetComponentInChildren<TitleBarScript>().GetComponentInChildren<Text>().color = Color.black;
     }
 
     public void SetWindowActivity()
@@ -121,7 +124,14 @@ public class WindowScript : MonoBehaviour, IPointerClickHandler, IPointerDownHan
         //window.windowWidth = Convert.ToInt32(Math.Round(rect.sizeDelta.x));
         //window.windowHeight = Convert.ToInt32(Math.Round(rect.sizeDelta.y));
         Destroy(instancedTaskbarObj);
-        Destroy(gameObject);
+        if (destroyOnClose)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
         //taskbarObject.GetComponent<TaskbarButtonScript>().OnWindowClosed();
     }
 

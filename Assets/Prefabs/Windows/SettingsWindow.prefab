@@ -1351,6 +1351,7 @@ MonoBehaviour:
   maximised: 0
   maximiseButton: {fileID: 108468667935292922}
   activeWindow: 0
+  destroyOnClose: 1
 --- !u!114 &6351383368412907804
 MonoBehaviour:
   m_ObjectHideFlags: 0

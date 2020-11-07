@@ -11,45 +11,41 @@ public class ToolTipScript : MonoBehaviour
     Text toolTipText;
     RectTransform backgroundRectTransform;
 
-    public Vector3 toolTipOffset;
-
     void Awake()
     {
         instance = this;
         image = GetComponentInChildren<Image>();
         toolTipText = image.GetComponentInChildren<Text>();
-        backgroundRectTransform = image.GetComponentInParent<RectTransform>();
+        backgroundRectTransform = GetComponentInParent<RectTransform>();
         HideToolTip();
     }
 
     void Update()
     {
-        image.color = ThemeManager.instance.toolTipColour;
-
         Vector2 localPoint;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(transform.parent as RectTransform, Input.mousePosition + toolTipOffset, null, out localPoint);
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(transform.parent as RectTransform, Input.mousePosition, null, out localPoint);
         transform.localPosition = localPoint;
 
         Vector2 anchoredPosition = transform.GetComponent<RectTransform>().anchoredPosition;
-        if(anchoredPosition.x + backgroundRectTransform.rect.width > transform.parent.GetComponent<RectTransform>().rect.width)
+        if (anchoredPosition.x + backgroundRectTransform.rect.width > transform.parent.GetComponent<RectTransform>().rect.width)
         {
-            anchoredPosition.x = transform.parent.GetComponent<RectTransform>().rect.width - backgroundRectTransform.rect.width - toolTipOffset.x;
+            anchoredPosition.x = transform.parent.GetComponent<RectTransform>().rect.width - backgroundRectTransform.rect.width;
         }
-        else if (anchoredPosition.x - backgroundRectTransform.rect.width < 0)
+        /*else if (anchoredPosition.x - backgroundRectTransform.rect.width < 0)
         {
-            anchoredPosition.x = backgroundRectTransform.rect.width + toolTipOffset.x;
-        }
+            anchoredPosition.x = backgroundRectTransform.rect.width;
+        }*/
 
         if (anchoredPosition.y + backgroundRectTransform.rect.height > transform.parent.GetComponent<RectTransform>().rect.height)
         {
-            anchoredPosition.y = transform.parent.GetComponent<RectTransform>().rect.height - backgroundRectTransform.rect.height - toolTipOffset.y;
+            anchoredPosition.y = transform.parent.GetComponent<RectTransform>().rect.height - backgroundRectTransform.rect.height;
         }
-        else if (anchoredPosition.y - backgroundRectTransform.rect.height < 0)
+        /*else if (anchoredPosition.y - backgroundRectTransform.rect.height < 0)
         {
-            anchoredPosition.y = backgroundRectTransform.rect.height + toolTipOffset.y;
-        }
+            anchoredPosition.y = backgroundRectTransform.rect.height;
+        }*/
 
-        transform.GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
+        //transform.GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
     }
 
     public void ShowToolTip(string toolTipString)
@@ -58,9 +54,9 @@ public class ToolTipScript : MonoBehaviour
         transform.SetAsLastSibling();
 
         toolTipText.text = toolTipString;
-        float textPaddingSize = 2f;
+        float textPaddingSize = 4f;
         Vector2 backgroundSize = new Vector2(toolTipText.preferredWidth + textPaddingSize * 2f, toolTipText.preferredHeight + textPaddingSize * 2f);
-        backgroundRectTransform.sizeDelta = backgroundSize;
+        image.GetComponent<RectTransform>().sizeDelta = backgroundSize;
     }
 
     public void HideToolTip()

@@ -77,21 +77,21 @@ public class SettingsWindow : MonoBehaviour
     {
         themeSettingsArea.SetActive(true);
         gameSettingsArea.SetActive(false);
-        aboutScreen.SetActive(false);
+        //aboutScreen.SetActive(false);
     }
 
     public void GameSettings()
     {
         themeSettingsArea.SetActive(false);
         gameSettingsArea.SetActive(true);
-        aboutScreen.SetActive(false);
+        //aboutScreen.SetActive(false);
     }
 
     public void AboutScreen()
     {
         themeSettingsArea.SetActive(false);
         gameSettingsArea.SetActive(false);
-        aboutScreen.SetActive(true);
+        //aboutScreen.SetActive(true);
     }
 
     public void SetVolume(float volume)

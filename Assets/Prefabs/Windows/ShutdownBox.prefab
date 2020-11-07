@@ -980,11 +980,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a10797211466b3b4eab14c8544b019f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnTaskbarObj: 0
+  titleBar: {fileID: 0}
   titleBarIcon: {fileID: 0}
   titleBarText: {fileID: 6356486629357941313}
   taskbarObject: {fileID: 8516889691892751072, guid: 5db51fb469928924a808bd1760ee2ee7,
     type: 3}
+  minimised: 0
+  maximised: 0
+  maximiseButton: {fileID: 0}
   activeWindow: 0
+  destroyOnClose: 1
 --- !u!114 &7388326874631353770
 MonoBehaviour:
   m_ObjectHideFlags: 0
