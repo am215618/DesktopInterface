@@ -840,7 +840,7 @@ MonoBehaviour:
   SaveDialog: {fileID: 6630501867958709287}
   TextDocButton: {fileID: 5307479731333868791, guid: 49f54ace077406b4a84e78cf6ef81917,
     type: 3}
-  fileName: test
+  fileName: Untitled
 --- !u!1 &1198395963069549160
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,6 +18,12 @@ public class TitleBarScript : MonoBehaviour, IDragHandler, IPointerDownHandler
         draggingTransform = transform.parent.GetComponentInParent<RectTransform>();
         canvas = ThemeManager.instance.ui;
         titleBarImage = GetComponent<Image>();
+
+        titleBarImage.color = ThemeManager.instance.activeTitleBarColour;
+        if (ThemeManager.instance.activeTitleBarColour.r <= 0.5f && ThemeManager.instance.activeTitleBarColour.g <= 0.5f && ThemeManager.instance.activeTitleBarColour.b <= 0.5f)
+            GetComponentInChildren<Text>().color = Color.white;
+        else
+            GetComponentInChildren<Text>().color = Color.black;
     }
 
     void Update()
@@ -34,6 +40,17 @@ public class TitleBarScript : MonoBehaviour, IDragHandler, IPointerDownHandler
     {
         draggingTransform.SetAsLastSibling();
         ThemeManager.instance.SetActiveWindow(windowScript);
-        titleBarImage.color = ThemeManager.instance.activeTitleBarColour;
+        if (windowScript.activeWindow)
+        {
+            titleBarImage.color = ThemeManager.instance.activeTitleBarColour;
+        }
+        else
+        {
+            titleBarImage.color = ThemeManager.instance.inactiveTitleBarColour;
+        }
+        if (ThemeManager.instance.activeTitleBarColour.r <= 0.5f && ThemeManager.instance.activeTitleBarColour.g <= 0.5f && ThemeManager.instance.activeTitleBarColour.b <= 0.5f)
+            GetComponentInChildren<Text>().color = Color.white;
+        else
+            GetComponentInChildren<Text>().color = Color.black;
     }
 }

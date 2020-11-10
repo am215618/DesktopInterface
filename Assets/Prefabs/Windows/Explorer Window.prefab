@@ -322,13 +322,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1198395962326679233}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a10797211466b3b4eab14c8544b019f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spawnTaskbarObj: 1
-  titleBar: {fileID: 0}
+  titleBar: {fileID: 3304976201057496536}
   titleBarIcon: {fileID: 1198395963131636339}
   titleBarText: {fileID: 1198395963069549166}
   taskbarObject: {fileID: 8516889691892751072, guid: 5db51fb469928924a808bd1760ee2ee7,
@@ -1287,6 +1287,7 @@ GameObject:
   - component: {fileID: 2307237819697594259}
   - component: {fileID: 1907993728875019436}
   - component: {fileID: 7086275456999505808}
+  - component: {fileID: 1751122759700913035}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -1350,10 +1351,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explorer: {fileID: 11400000, guid: 03fc4848cba01464a894a773d461db22, type: 2}
-  iconBase: {fileID: 3289974856533536678, guid: 7b7b47da552c80a47a88e751c59353f9,
+  iconBase: {fileID: 2509175662801923909, guid: 7b7b47da552c80a47a88e751c59353f9,
     type: 3}
   icons:
   - {fileID: 11400000, guid: dd36db1211879124b8ccefe1b2bcb299, type: 2}
+--- !u!114 &1751122759700913035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6812947963386847446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 598ecf2631e38954c9b521046fb390f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7065216146370305931
 GameObject:
   m_ObjectHideFlags: 0

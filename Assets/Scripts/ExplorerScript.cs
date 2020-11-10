@@ -5,7 +5,7 @@ using UnityEngine;
 public class ExplorerScript : MonoBehaviour
 {
     public Explorer explorer;
-    public IconScript iconBase;
+    public GameObject iconBase;
 
     public Icon[] icons;
     GameObject[] visibleIcons;

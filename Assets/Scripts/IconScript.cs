@@ -85,6 +85,33 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         }
     }
 
+    void OnMouseDown()
+    {
+        clickCount++;
+        clickDelay = maxClickDelay;
+
+        Debug.Log(clickCount);
+
+        if (clickCount == 1)
+        {
+            GetComponent<Image>().color = ThemeManager.instance.SelectedColour;
+            if (GetComponent<Image>().color.r <= 0.5f && GetComponent<Image>().color.g <= 0.5f && GetComponent<Image>().color.b <= 0.5f)
+            {
+                GetComponentInChildren<Text>().color = Color.white;
+            }
+            else
+            {
+                GetComponentInChildren<Text>().color = Color.black;
+            }
+        }
+        else if (clickCount == openOnClickCount)
+        {
+            GetComponent<Image>().color = new Color(0, 0, 0, 0);
+            Instantiate(window, canvas.transform);
+            clickCount = 0;
+        }
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         clickCount++;

@@ -104,7 +104,11 @@ public class ThemeManager : MonoBehaviour
 
     public void SetActiveWindow(WindowScript openWindow)
     {
-        activeWindow.activeWindow = false;
+        if (activeWindow != null)
+        {
+            activeWindow.activeWindow = false;
+            activeWindow.SetWindowActivity();
+        }
         activeWindow = openWindow;
         activeWindow.activeWindow = true;
         activeWindow.SetWindowActivity();

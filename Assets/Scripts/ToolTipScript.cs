@@ -14,9 +14,15 @@ public class ToolTipScript : MonoBehaviour
     void Awake()
     {
         instance = this;
+        
+    }
+
+    void Start()
+    {
         image = GetComponentInChildren<Image>();
         toolTipText = image.GetComponentInChildren<Text>();
         backgroundRectTransform = GetComponentInParent<RectTransform>();
+        image.color = ThemeManager.instance.toolTipColour;
         HideToolTip();
     }
 
