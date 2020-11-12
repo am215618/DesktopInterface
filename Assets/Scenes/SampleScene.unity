@@ -329,7 +329,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 1
   m_CellSize: {x: 68, y: 68}
-  m_Spacing: {x: 16, y: 16}
+  m_Spacing: {x: 12, y: 12}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!1 &445125038
@@ -1157,6 +1157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ui: {fileID: 1808379094}
   cursorCanvas: {fileID: 637513827}
+  taskbarCanvas: {fileID: 757094348}
   iconSpace: {fileID: 432811808}
   cursor: {fileID: 1765060779}
   taskbar: {fileID: 1166796792}
@@ -1188,7 +1189,7 @@ PrefabInstance:
     - target: {fileID: 2509175662801923909, guid: 7b7b47da552c80a47a88e751c59353f9,
         type: 3}
       propertyPath: m_Name
-      value: Icon (2)
+      value: FolderIcon
       objectReference: {fileID: 0}
     - target: {fileID: 2509175662801923909, guid: 7b7b47da552c80a47a88e751c59353f9,
         type: 3}
@@ -1856,8 +1857,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -369.1, y: 0}
-  m_SizeDelta: {x: -924.2283, y: 28}
+  m_AnchoredPosition: {x: -385.9, y: 0}
+  m_SizeDelta: {x: -957.8579, y: 28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1334806532
 MonoBehaviour:
@@ -2891,7 +2892,7 @@ PrefabInstance:
     - target: {fileID: 2509175662801923909, guid: 7b7b47da552c80a47a88e751c59353f9,
         type: 3}
       propertyPath: m_Name
-      value: Icon
+      value: NotesIcon
       objectReference: {fileID: 0}
     - target: {fileID: 2575864088419312046, guid: 7b7b47da552c80a47a88e751c59353f9,
         type: 3}

@@ -17,6 +17,8 @@ public class ExplorerScript : MonoBehaviour
         for (int i = 0; i < icons.Length; i++)
         {
             visibleIcons[i] = Instantiate(iconBase.gameObject, transform);
+            visibleIcons[i].GetComponent<IconScript>().icon = icons[i];
+            visibleIcons[i].GetComponent<IconScript>().window = icons[i].window;
             visibleIcons[i].GetComponent<IconScript>().canDrag = false;
         }
     }

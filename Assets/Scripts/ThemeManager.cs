@@ -16,6 +16,7 @@ public class ThemeManager : MonoBehaviour
 
     public Canvas ui;
     public Canvas cursorCanvas;
+    public Canvas taskbarCanvas;
 
     public GameObject iconSpace;
     public GameObject cursor;

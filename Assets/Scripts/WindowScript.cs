@@ -9,15 +9,15 @@ using UnityEditor;
 #endif
 
 [ExecuteInEditMode()]
-
 public class WindowScript : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
 {
 #if UNITY_EDITOR
+    
     [MenuItem("GameObject/UI/Window")]
     public static void AddWindow()
     {
         GameObject obj = Instantiate(Resources.Load<GameObject>("DefaultObjects/WindowTemplete"));
-        obj.transform.SetParent(Selection.activeGameObject.transform, false);
+        obj.transform.parent = ThemeManager.instance.ui.transform;
     }
 #endif
 

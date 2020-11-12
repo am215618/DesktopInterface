@@ -3,9 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
+[ExecuteInEditMode()]
 public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler, IPointerExitHandler
 {
+#if UNITY_EDITOR
+    [MenuItem("GameObject/UI/Icon")]
+    public static void AddIcon()
+    {
+        GameObject obj = Instantiate(Resources.Load<GameObject>("DefaultObjects/Icon"));
+        obj.transform.parent = ThemeManager.instance.ui.GetComponentInChildren<GridLayoutGroup>().transform;
+    }
+#endif
+
     //Sets the icon
     public Icon icon;
     Image iconImage;
@@ -15,7 +28,7 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     GameObject draggingIcon;
     RectTransform draggingTransform;
 
-    [SerializeField] GameObject window;
+    public GameObject window;
 
     public bool canDrag;
 
@@ -34,9 +47,12 @@ public class IconScript : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
         canvas = ThemeManager.instance.ui;
 
-        iconImage.sprite = icon.iconSprite;
-        iconText.text = icon.iconName;
-        window = icon.window;
+        if (icon != null)
+        {
+            iconImage.sprite = icon.iconSprite;
+            iconText.text = icon.iconName;
+            window = icon.window;
+        }
     }
 
     void Update()

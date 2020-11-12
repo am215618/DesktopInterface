@@ -3,9 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
-public class NotificationObj : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+[ExecuteInEditMode()]
+public class NotificationObj : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
+#if UNITY_EDITOR
+    [MenuItem("GameObject/UI/Notification")]
+    public static void AddNotification()
+    {
+        GameObject obj = Instantiate(Resources.Load<GameObject>("DefaultObjects/Notification"));
+        obj.transform.parent = ThemeManager.instance.taskbarCanvas.GetComponentInChildren<NotificationAreaScript>().transform.GetChild(2);
+    }
+#endif
+
     public Notification notification;
     public GameObject toolTip;
     public GameObject Popup;
@@ -14,7 +27,6 @@ public class NotificationObj : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public bool spawnPopupBaloon;
 
     float notificationCooldown;
-    GameObject tmpToolTip;
 
     // Start is called before the first frame update
     void Start()
@@ -74,5 +86,10 @@ public class NotificationObj : MonoBehaviour, IPointerEnterHandler, IPointerExit
     {
         ShowToolTip();
         ToolTipScript.instance.HideToolTip();
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        //if(eventData.pointerPress)
     }
 }
