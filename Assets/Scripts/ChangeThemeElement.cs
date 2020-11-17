@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class ChangeThemeElement : MonoBehaviour, IPointerClickHandler
 {
+    //The elements that can have different colours.
     public enum DesktopElement
     {
         Background,
@@ -15,10 +16,10 @@ public class ChangeThemeElement : MonoBehaviour, IPointerClickHandler
         ToolTip,
         SelectedIcon
     }
+    public DesktopElement desktopElement;
     ThemeManager themeManager;
 
-    public DesktopElement desktopElement;
-
+    //Grabs the variables for the colour picker and the header
     public ColourPicker colourPicker;
     public Text colourPickerHeader;
 
@@ -26,11 +27,9 @@ public class ChangeThemeElement : MonoBehaviour, IPointerClickHandler
     {
         themeManager = ThemeManager.instance;
 
-        switch (desktopElement)
+        switch (desktopElement) //Sets each of the colour sliders to the respective variable in the theme manager.
         {
             case DesktopElement.Background:
-                colourPickerHeader.text = "Background";
-                colourPicker.image = this.GetComponent<Image>();
                 GetComponent<Image>().color = themeManager.backgroundColour;
                 break;
             case DesktopElement.ActiveTitleBar:
@@ -53,8 +52,7 @@ public class ChangeThemeElement : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("test");
-        switch (desktopElement)
+        switch (desktopElement) //Changes the colour of the theme element.
         {
             case DesktopElement.Background:
                 colourPicker.changingComponent = ColourPicker.ComponentChanging.Background;

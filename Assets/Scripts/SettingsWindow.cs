@@ -28,6 +28,7 @@ public class SettingsWindow : MonoBehaviour
     [Space]
     public GameObject aboutScreen;
 
+    //Sets the colour pickers to the ones that are children of the theme settings area.
     private void OnValidate()
     {
         colourPickers = themeSettingsArea.GetComponentsInChildren<ColourPicker>();
@@ -35,8 +36,10 @@ public class SettingsWindow : MonoBehaviour
 
     void Start()
     {
+        //Sets the theme manager to the one in the scene.
         themeManager = ThemeManager.instance;
 
+        //Toggles wether or not the game is in full screen already.
         if (Screen.fullScreen)
         {
             enterFullScreen.gameObject.SetActive(false);
@@ -68,11 +71,13 @@ public class SettingsWindow : MonoBehaviour
             }
         }
 
+        //Adds the options to the dropdown box.
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentResIndex;
         resolutionDropdown.RefreshShownValue();
     }
 
+    //The three functions below sets the screen to the one selected.
     public void ThemeSettings()
     {
         themeSettingsArea.SetActive(true);
@@ -94,11 +99,13 @@ public class SettingsWindow : MonoBehaviour
         //aboutScreen.SetActive(true);
     }
 
+    //Sets the volume slider to whatever the volume is in the game.
     public void SetVolume(float volume)
     {
         audioMixer.SetFloat("Volume", volume);
     }
 
+    //Sets wether or not the game is in full screen.
     public void SetFullScreen(bool isFullScreen)
     {
         Screen.fullScreen = isFullScreen;
@@ -114,12 +121,14 @@ public class SettingsWindow : MonoBehaviour
         }
     }
 
+    //Sets the resolution of the game.
     public void SetResolution(int resolutionIndex)
     {
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
+    //Applies the colours to their respective components.
     public void ApplyAllThemeSettings()
     {
         colourPickers = themeSettingsArea.GetComponentsInChildren<ColourPicker>();
@@ -129,6 +138,7 @@ public class SettingsWindow : MonoBehaviour
         }
     }
 
+    //Deliberatly crashes the system (not implemented)
     public void DeliberateCrash()
     {
         

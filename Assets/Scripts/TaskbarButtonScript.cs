@@ -4,24 +4,25 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class TaskbarButtonScript : ButtonScript, IPointerClickHandler
+public class TaskbarButtonScript : MonoBehaviour, IPointerClickHandler
 {
-    [SerializeField] ThemeManager themeManager;
+    //variables to assign 
+    ThemeManager themeManager;
     public GameObject window;
 
     public Sprite selectedButton;
     public Sprite defaultButton;
 
-    [SerializeField] Image taskbarImage;
-    [SerializeField] Text taskbarText;
+    Image taskbarImage;
+    Text taskbarText;
 
+    //sets the theme manager to the instance in the scene.
     private void Awake()
     {
         themeManager = ThemeManager.instance;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    void Start() //This sets all the variables.
     {
         transform.SetParent(GameObject.Find("TaskbarObjects").transform);
 
@@ -43,6 +44,7 @@ public class TaskbarButtonScript : ButtonScript, IPointerClickHandler
         taskbarText.text = windowScript.titleBarText.text;
     }
 
+    //These variables arent used, but what they should do is set the state dependent on the window that it has opened.
     public void OnWindowActive()
     {
         Image buttonImage = GetComponent<Image>();
@@ -62,7 +64,7 @@ public class TaskbarButtonScript : ButtonScript, IPointerClickHandler
         Destroy(gameObject);
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnPointerClick(PointerEventData eventData) //sets the set of the window to active.
     {
         WindowScript windowScript = window.GetComponent<WindowScript>();
 

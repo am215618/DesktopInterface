@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//In a nutshell this is where all the theme settings are stored as well as some public variables and functions.
 public class ThemeManager : MonoBehaviour
 {
     #region Singleton
@@ -32,15 +33,15 @@ public class ThemeManager : MonoBehaviour
     public Color backgroundColour;
     public Color activeTitleBarColour;
     public Color inactiveTitleBarColour;
-    public Color TaskbarColour;
+    public Color TaskbarColour; 
     public Color cursorColour;
-    public Color toolTipColour;
-    public Color SelectedColour;
+    public Color toolTipColour; //includes the popup you see in the notification
+    public Color SelectedColour; //Selected Icons
 
     public Sprite maximiseButton;
     public Sprite unmaximiseButton;
 
-    public int maxClickDelay;
+    public float maxClickDelay; //how far apart the two clicks can be.
 
     private void OnValidate()
     {
@@ -54,18 +55,7 @@ public class ThemeManager : MonoBehaviour
         UpdateTheme();
     }
 
-    void Start()
-    {
-        Camera.main.backgroundColor = backgroundColour;
-        cursor.GetComponent<Image>().color = cursorColour;
-
-        iconTexts = iconSpace.GetComponentsInChildren<Text>();
-        taskbarImages = taskbar.GetComponentsInChildren<Image>();
-        taskbarTexts = taskbar.GetComponentsInChildren<Text>();
-
-        UpdateTheme();
-    }
-
+    //This changes the colours of the theme
     public void UpdateTheme()
     {
         Camera.main.backgroundColor = backgroundColour;
@@ -103,6 +93,7 @@ public class ThemeManager : MonoBehaviour
         }
     }
 
+    //Sets the window activity and it's title bar colours.
     public void SetActiveWindow(WindowScript openWindow)
     {
         if (activeWindow != null)
@@ -115,6 +106,7 @@ public class ThemeManager : MonoBehaviour
         activeWindow.SetWindowActivity();
     }
 
+    //Sets the opened window as an active window.
     public void OpenWindow(WindowScript openWindow)
     {
         if(activeWindow != null)

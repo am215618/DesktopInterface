@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//This will display the FPS of the game in real time.
 public class FPSCounter : MonoBehaviour
 {
     int averageFrameRate;
@@ -20,7 +21,7 @@ public class FPSCounter : MonoBehaviour
         else
             gameObject.SetActive(true);
     }
-    // Update is called once per frame
+
     void Update()
     {
         float timelapse = Time.smoothDeltaTime;

@@ -6,13 +6,14 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 #if UNITY_EDITOR
 using UnityEditor;
-#endif
+
 
 [ExecuteInEditMode()]
+#endif
 public class WindowScript : MonoBehaviour, IPointerClickHandler, IPointerDownHandler
 {
 #if UNITY_EDITOR
-    
+    //This would add the object into the scene and put it as a child to the desktop canvas
     [MenuItem("GameObject/UI/Window")]
     public static void AddWindow()
     {
@@ -20,8 +21,7 @@ public class WindowScript : MonoBehaviour, IPointerClickHandler, IPointerDownHan
         obj.transform.parent = ThemeManager.instance.ui.transform;
     }
 #endif
-
-    //public Window window;
+    //variables
     RectTransform rect;
 
     public bool spawnTaskbarObj;
@@ -41,8 +41,7 @@ public class WindowScript : MonoBehaviour, IPointerClickHandler, IPointerDownHan
 
     [HideInInspector] public bool activeWindow = false;
     public bool destroyOnClose;
-
-    private void Awake()
+    private void Awake() 
     {
         EventSystem.current.SetSelectedGameObject(gameObject);
     }
@@ -50,28 +49,15 @@ public class WindowScript : MonoBehaviour, IPointerClickHandler, IPointerDownHan
     void Start()
     {
         rect = GetComponent<RectTransform>();
-        if (spawnTaskbarObj)
+        if (spawnTaskbarObj) //Sets a new game object to a instance of a taskbar object.
         {
             instancedTaskbarObj = Instantiate(taskbarObject);
             instancedTaskbarObj.GetComponent<TaskbarButtonScript>().window = this.gameObject;
         }
         ThemeManager.instance.OpenWindow(this);
-        if (GetComponentInChildren<TitleBarScript>() != null)
-        {
-            if (maximiseButton != null)
-            {
-                maximiseButton.sprite = ThemeManager.instance.maximiseButton;
-            }
-        }
-        //instancedTaskbarObj.GetComponent<TaskbarButtonScript>().OnWindowActive();
     }
 
-    void Update()
-    {
-
-    }
-
-    public void SetWindowActivity()
+    public void SetWindowActivity() //sets the title bar's colour whenever the window changes activity.
     {
         if (GetComponentInChildren<TitleBarScript>() != null)
         {
@@ -90,7 +76,7 @@ public class WindowScript : MonoBehaviour, IPointerClickHandler, IPointerDownHan
         }
     }
 
-    public void Minimise()
+    public void Minimise() //hides the object.
     {
         minimised = true;
         gameObject.SetActive(false);
@@ -100,6 +86,7 @@ public class WindowScript : MonoBehaviour, IPointerClickHandler, IPointerDownHan
     {
         if (!maximised)
         {
+            //teleports the window to the top left and makes it bigger.
             originalWindowSize = rect.sizeDelta;
             maximiseButton.sprite = ThemeManager.instance.unmaximiseButton;
 
@@ -114,20 +101,17 @@ public class WindowScript : MonoBehaviour, IPointerClickHandler, IPointerDownHan
         }
         else
         {
+            //returns the window to its original size.
             rect.sizeDelta = originalWindowSize;
             rect.anchoredPosition = new Vector2(Mathf.RoundToInt(rect.anchoredPosition.x), Mathf.RoundToInt(rect.anchoredPosition.y));
             maximiseButton.sprite = ThemeManager.instance.maximiseButton;
             GetComponentInChildren<TitleBarScript>().enabled = true;
             maximised = false;
         }
-        //teleport it to the top left
-        //make the window bigger
     }
 
-    public void CloseWindow()
+    public void CloseWindow() //destroys the taskbar object and the window.
     {
-        //window.windowWidth = Convert.ToInt32(Math.Round(rect.sizeDelta.x));
-        //window.windowHeight = Convert.ToInt32(Math.Round(rect.sizeDelta.y));
         Destroy(instancedTaskbarObj);
         if (destroyOnClose)
         {
@@ -137,16 +121,15 @@ public class WindowScript : MonoBehaviour, IPointerClickHandler, IPointerDownHan
         {
             gameObject.SetActive(false);
         }
-        //taskbarObject.GetComponent<TaskbarButtonScript>().OnWindowClosed();
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnPointerClick(PointerEventData eventData) //Sets the window to be on top of the others.
     {
         transform.SetAsLastSibling();
         ThemeManager.instance.SetActiveWindow(this);
     }
 
-    public void OnPointerDown(PointerEventData eventData)
+    public void OnPointerDown(PointerEventData eventData) //Sets the window to be on top of the others.
     {
         ThemeManager.instance.SetActiveWindow(this);
     }

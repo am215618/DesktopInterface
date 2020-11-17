@@ -7,19 +7,17 @@ using UnityEngine.EventSystems;
 
 public class StartMenuButtonScript : MonoBehaviour, IPointerClickHandler
 {
-    public StartMenuItem startMenuItem;
+    public StartMenuItem startMenuItem; //The properties.
 
-    StartMenuScript startMenu;
-    [SerializeField] GameObject window;
+    GameObject window; //Setting the window that it would open when clicked on.
 
     public void Start()
     {
-        startMenu = GetComponentInParent<StartMenuScript>();
-        window = startMenuItem.window;
+        window = startMenuItem.window; //Sets the window variable to the one set in the properties.
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Instantiate(window, ThemeManager.instance.ui.transform);
+        Instantiate(window, ThemeManager.instance.ui.transform); //Creates a new window instance.
     }
 }

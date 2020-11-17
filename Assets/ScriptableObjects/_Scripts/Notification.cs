@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Sets properties of the notification: sprite, text, and what the popup ballon says.
 [CreateAssetMenu(fileName = "New Notification", menuName = "Notification")]
 public class Notification : ScriptableObject
 {

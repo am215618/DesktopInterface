@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//Defines what the icons in the explorer window are.
 [CreateAssetMenu(fileName = "Explorer Window", menuName = "Window/Explorer")]
 public class Explorer : Window
 {
-    public Icon[] icons;
-    public bool isOpen;
+    public List<Icon> icons;
 }

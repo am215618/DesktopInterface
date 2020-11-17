@@ -328,7 +328,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnTaskbarObj: 1
-  titleBar: {fileID: 3304976201057496536}
   titleBarIcon: {fileID: 1198395963131636339}
   titleBarText: {fileID: 1198395963069549166}
   taskbarObject: {fileID: 8516889691892751072, guid: 5db51fb469928924a808bd1760ee2ee7,
@@ -336,7 +335,7 @@ MonoBehaviour:
   minimised: 0
   maximised: 0
   maximiseButton: {fileID: 1898591995406509298}
-  activeWindow: 0
+  activeWindow: 1
   destroyOnClose: 1
 --- !u!1 &1198395963069549160
 GameObject:
@@ -396,7 +395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -906,7 +905,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0.49803922, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -942,8 +941,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1a46eba8f3af3429589e7c0b2298d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  draggingTransform: {fileID: 0}
-  canvas: {fileID: 0}
 --- !u!1 &4007834428938603055
 GameObject:
   m_ObjectHideFlags: 0
@@ -1265,7 +1262,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6928633862597279723}
+      - m_Target: {fileID: 7086275456999505808}
         m_MethodName: CloseWindow
         m_Mode: 1
         m_Arguments:
@@ -1355,6 +1352,8 @@ MonoBehaviour:
     type: 3}
   icons:
   - {fileID: 11400000, guid: dd36db1211879124b8ccefe1b2bcb299, type: 2}
+  TaskbarObject: {fileID: 8516889691892751072, guid: 5db51fb469928924a808bd1760ee2ee7,
+    type: 3}
 --- !u!114 &1751122759700913035
 MonoBehaviour:
   m_ObjectHideFlags: 0

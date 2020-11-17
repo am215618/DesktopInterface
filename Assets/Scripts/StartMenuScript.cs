@@ -6,27 +6,19 @@ using UnityEngine.UI;
 
 public class StartMenuScript : MonoBehaviour
 {
+    //Gets the theme manager that is in the scene.
     ThemeManager themeManager;
 
+    //Gets the start menu items
     public List<StartMenuItem> startMenuItems;
     [SerializeField] GameObject[] buttons;
 
-    private void Awake()
+    private void Awake() //Sets the theme manager to the instance in the scene.
     {
         themeManager = ThemeManager.instance;
     }
 
-    private void OnValidate()
-    {
-        buttons = new GameObject[startMenuItems.Count];
-
-        for (int i = 0; i < startMenuItems.Count; i++)
-        {
-            buttons[i] = GetComponentInChildren<Toggle>().gameObject;
-        }
-    }
-
-    // Start is called before the first frame update
+    //This sets all of the buttons to the each of items in the menu.
     void Start()
     {
         buttons = new GameObject[startMenuItems.Count];

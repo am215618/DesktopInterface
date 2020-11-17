@@ -6,44 +6,37 @@ using UnityEngine.UI;
 
 public class NotificationAreaScript : MonoBehaviour
 {
-    public bool displaySeconds;
+    public bool displaySeconds; //for the clock.
     RectTransform rectTransform;
     Text clockText;
-    RectTransform objectsRect;
     public GameObject NotificationsSpace;
-    int numberOfNotifications;
-    bool isChecked = false;
 
-    private void Start()
+    private void Start() //Sets the variables
     {
         rectTransform = GetComponent<RectTransform>();
         clockText = GetComponentInChildren<Text>();
-        objectsRect = clockText.gameObject.GetComponent<RectTransform>();
     }
 
-    private void Update()
+    private void Update() //Constantly updates the time.
     {
         UpdateTime();
     }
 
-    void CheckDisplaySeconds()
+    void CheckDisplaySeconds() //Changes the display clock depending of the seconds appear.
     {
         if (displaySeconds)
         {
-            //rectTransform.anchoredPosition = new Vector3(-38, 13.5f, 0);
             rectTransform.sizeDelta = new Vector2((67 + NotificationsSpace.GetComponent<RectTransform>().rect.width), 24);
             NotificationsSpace.GetComponent<RectTransform>().anchoredPosition = new Vector2(-61 - (NotificationsSpace.transform.childCount * 10), 0);
         }
         else if (!displaySeconds)
         {
-            //rectTransform.anchoredPosition = new Vector3(-28, 13.5f, 0);
-            //rectTransform.sizeDelta = new Vector2(880 - (20 * numberOfNotifications), 0);
             rectTransform.sizeDelta = new Vector2((47 + NotificationsSpace.GetComponent<RectTransform>().rect.width), 24);
             NotificationsSpace.GetComponent<RectTransform>().anchoredPosition = new Vector2(-41 - (NotificationsSpace.transform.childCount * 10), 0);
         }
     }
     
-    void UpdateTime()
+    void UpdateTime() //Sets the time to the current time.
     {
         DateTime time = DateTime.Now;
 
@@ -62,7 +55,7 @@ public class NotificationAreaScript : MonoBehaviour
         CheckDisplaySeconds();
     }
 
-    string zero(int x)
+    string zero(int x) //allows for the correct display of the time.
     {
         return x.ToString().PadLeft(2, '0');
     }

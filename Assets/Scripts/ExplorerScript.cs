@@ -4,22 +4,36 @@ using UnityEngine;
 
 public class ExplorerScript : MonoBehaviour
 {
-    public Explorer explorer;
-    public GameObject iconBase;
+    public Explorer explorer; //Explorer Properties
+    public GameObject iconBase; //base for the icon
 
-    public Icon[] icons;
-    GameObject[] visibleIcons;
+    public List<Icon> icons; //List of icons which are inherited from the explorer properties
+    GameObject[] visibleIcons; //list of visible game objects.
+
+    public GameObject TaskbarObject;
+    GameObject instancedTaskbarObj;
 
     void Start()
     {
         icons = explorer.icons;
-        visibleIcons = new GameObject[icons.Length];
-        for (int i = 0; i < icons.Length; i++)
+        visibleIcons = new GameObject[icons.Count];
+        for (int i = 0; i < icons.Count; i++)
         {
+            //Sets the visible icons to an instansiated icon base, then define their properties.
             visibleIcons[i] = Instantiate(iconBase.gameObject, transform);
             visibleIcons[i].GetComponent<IconScript>().icon = icons[i];
             visibleIcons[i].GetComponent<IconScript>().window = icons[i].window;
             visibleIcons[i].GetComponent<IconScript>().canDrag = false;
         }
+
+        instancedTaskbarObj = Instantiate(TaskbarObject);
+        instancedTaskbarObj.GetComponent<TaskbarButtonScript>().window = GetComponentInParent<WindowScript>().gameObject;
+    }
+
+    //destroys the window and the taskbar object.
+    public void CloseWindow()
+    {
+        Destroy(instancedTaskbarObj);
+        Destroy(GetComponentInParent<WindowScript>().gameObject);
     }
 }
