@@ -63,45 +63,41 @@ public class MediaPlayer : MonoBehaviour
 
     public void UpdateSongBackward()
     {
-        //Stops the current song.
-        source.Stop();
-        if(currentSongIndex > 0) //Deducts the song index
+        source.Stop(); //Stops the current song.
+
+        if (currentSongIndex > 0) //Deducts the song index
         {
             currentSongIndex--;
-        }
-        else if (currentSongIndex < 0) //sets the relevent variables and plays the song.
-        {
-            source.clip = playlist.music[currentSongIndex];
+            source.clip = playlist.music[currentSongIndex]; //sets the relevent variables and plays the song.
             currentlyPlayingText.text = "Currently playing: " + playlist.music[currentSongIndex].name;
-            PlayMusic();
         }
         else
         {
             //start again.
             source.clip = playlist.music[0];
-            PlayMusic();
         }
+        PlayMusic();
     }
 
     public void UpdateSongForward()
     {
         source.Stop(); //Stops the current song.
+
         if (currentSongIndex < playlist.music.Count) //Adds to the song index
         {
             currentSongIndex++;
-        }
-        else if (currentSongIndex < playlist.music.Count) //sets the relevent variables and plays the song.
-        {
-            source.clip = playlist.music[currentSongIndex];
-            currentlyPlayingText.text = "Currently playing: " + playlist.music[currentSongIndex].name;
-            PlayMusic();
+            source.clip = playlist.music[currentSongIndex]; //sets the relevent variables
         }
         else 
         {
             //start again.
-            source.clip = playlist.music[playlist.music.Count - 1];
-            PlayMusic();
+            currentSongIndex = 0;
+            source.clip = playlist.music[0];
         }
+
+        //plays the song.
+        currentlyPlayingText.text = "Currently playing: " + playlist.music[currentSongIndex].name;
+        PlayMusic();
     }
 
     public void PauseMusic() //pauses the music and swaps some buttons' visibilty
