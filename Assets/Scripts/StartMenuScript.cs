@@ -16,13 +16,12 @@ public class StartMenuScript : MonoBehaviour
     private void Awake() //Sets the theme manager to the instance in the scene.
     {
         themeManager = ThemeManager.instance;
+        buttons = new GameObject[startMenuItems.Count];
     }
 
     //This sets all of the buttons to the each of items in the menu.
     void Start()
     {
-        buttons = new GameObject[startMenuItems.Count];
-
         for (int i = 0; i < startMenuItems.Count; i++)
         {
             buttons[i] = GetComponentsInChildren<Toggle>()[i].gameObject;

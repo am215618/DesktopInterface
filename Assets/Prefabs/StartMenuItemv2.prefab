@@ -131,7 +131,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startMenuItem: {fileID: 0}
-  window: {fileID: 0}
 --- !u!114 &4814516758557329656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,7 +305,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e39d605bf19273b43a2461c58722e04f, type: 2}
   - {fileID: 11400000, guid: e873e4ee0458e3e4492ae1e9901755ae, type: 2}
   - {fileID: 11400000, guid: b613aa40e70101b4385caacbcc66f0c0, type: 2}
+  - {fileID: 11400000, guid: b613aa40e70101b4385caacbcc66f0c0, type: 2}
   buttons:
+  - {fileID: 4814516758557329669}
   - {fileID: 4814516758557329669}
   - {fileID: 4814516758557329669}
   - {fileID: 4814516758557329669}

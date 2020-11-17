@@ -7,7 +7,6 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "Start Menu Item", menuName = "Start Menu Item")]
 public class StartMenuItem : ScriptableObject
 {
-    public int buttonID;
     public Sprite sprite;
     public string menuName;
 
