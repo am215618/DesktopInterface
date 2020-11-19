@@ -11,6 +11,9 @@ public class CursorScript : MonoBehaviour
     Color cursorColour;
 
     Image outline;
+    public GameObject shadow;
+    public float cursorShadowOffset;
+    bool cursorShadow;
 
     void Start()
     {
@@ -18,6 +21,7 @@ public class CursorScript : MonoBehaviour
         cursorColour = ThemeManager.instance.cursorColour;
         canvas = transform.parent.GetComponent<Canvas>();
         outline = transform.GetChild(0).GetComponent<Image>();
+        cursorShadow = ThemeManager.instance.cursorShadow;
 
         //Changes the colour of the cursor's outline, which is dependent on the colour.
         if (cursorColour.r <= 0.5f && cursorColour.g <= 0.5f && cursorColour.b <= 0.5f)
@@ -40,6 +44,12 @@ public class CursorScript : MonoBehaviour
         //checks the cursor position and puts a slight offset so that the cursor looks like its in the correct position but it isn't.
         Vector2 mousePos;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, Input.mousePosition, canvas.worldCamera, out mousePos);
-        transform.position = canvas.transform.TransformPoint(mousePos) - new Vector3(-16.1f, 16.1f, 0);
+        transform.position = canvas.transform.TransformPoint(mousePos) - new Vector3(-16, 16, 0);
+        shadow.transform.position = transform.position + new Vector3(cursorShadowOffset, -cursorShadowOffset, 0);
+    }
+
+    public void ToggleShadow(bool showShadow)
+    {
+        shadow.SetActive(showShadow);
     }
 }

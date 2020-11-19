@@ -37,6 +37,7 @@ public class CursorChanger : MonoBehaviour
 
         //Toggle visibility if the cursor sprite allows it.
         cursor.GetComponent<Image>().sprite = previewImage.sprite;
+        cursor.GetComponent<CursorScript>().shadow.GetComponent<Image>().sprite = previewImage.sprite;
         cursorOutline.SetActive(previewHasNoSeparateOutline);
 
         //Change the colour of the outline of the cursor, in respect of the colour of the cursor.

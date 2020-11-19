@@ -25,15 +25,5 @@ public class ExplorerScript : MonoBehaviour
             visibleIcons[i].GetComponent<IconScript>().window = icons[i].window;
             visibleIcons[i].GetComponent<IconScript>().canDrag = false;
         }
-
-        instancedTaskbarObj = Instantiate(TaskbarObject);
-        instancedTaskbarObj.GetComponent<TaskbarButtonScript>().window = GetComponentInParent<WindowScript>().gameObject;
-    }
-
-    //destroys the window and the taskbar object.
-    public void CloseWindow()
-    {
-        Destroy(instancedTaskbarObj);
-        Destroy(GetComponentInParent<WindowScript>().gameObject);
     }
 }

@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4531e6113e7e6f847a2cf79969a6a6a3, type: 3}
   m_Name: MediaPlayer
   m_EditorClassIdentifier: 
-  buttonID: 0
-  sprite: {fileID: 0}
-  menuName: 
-  window: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 087370c3c1c474c41910ccbfb4fdeeb5, type: 3}
+  menuName: Media Player
+  window: {fileID: 1198395962326679233, guid: f0fca939d2b0eef4b969d578c0b81b06, type: 3}

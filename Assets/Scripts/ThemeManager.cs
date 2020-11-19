@@ -42,6 +42,7 @@ public class ThemeManager : MonoBehaviour
     public Sprite unmaximiseButton;
 
     public float maxClickDelay; //how far apart the two clicks can be.
+    public bool cursorShadow;
 
     private void OnValidate()
     {

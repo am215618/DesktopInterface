@@ -11,7 +11,7 @@ public class SettingsWindow : MonoBehaviour
     //Theme Settings
     [Space]
     public GameObject themeSettingsArea;
-
+    public GameObject cursorSettingsArea;
 
     [Space] //Game Settings
     public GameObject gameSettingsArea;
@@ -77,26 +77,37 @@ public class SettingsWindow : MonoBehaviour
         resolutionDropdown.RefreshShownValue();
     }
 
-    //The three functions below sets the screen to the one selected.
+    //The functions below sets the screen to the one selected.
+    public void CursorSettings()
+    {
+        cursorSettingsArea.SetActive(true);
+        themeSettingsArea.SetActive(false);
+        gameSettingsArea.SetActive(false);
+        aboutScreen.SetActive(false);
+    }
+
     public void ThemeSettings()
     {
+        cursorSettingsArea.SetActive(false);
         themeSettingsArea.SetActive(true);
         gameSettingsArea.SetActive(false);
-        //aboutScreen.SetActive(false);
+        aboutScreen.SetActive(false);
     }
 
     public void GameSettings()
     {
+        cursorSettingsArea.SetActive(false);
         themeSettingsArea.SetActive(false);
         gameSettingsArea.SetActive(true);
-        //aboutScreen.SetActive(false);
+        aboutScreen.SetActive(false);
     }
 
     public void AboutScreen()
     {
+        cursorSettingsArea.SetActive(false);
         themeSettingsArea.SetActive(false);
         gameSettingsArea.SetActive(false);
-        //aboutScreen.SetActive(true);
+        aboutScreen.SetActive(true);
     }
 
     //Sets the volume slider to whatever the volume is in the game.
@@ -136,6 +147,13 @@ public class SettingsWindow : MonoBehaviour
         {
             colourPickers[i].ApplyColour();
         }
+    }
+
+    //Changes whether or not the cursor has a shadow
+    public void ChangeCursorShadowAppearance(bool shadow)
+    {
+        themeManager.cursorShadow = shadow;
+        themeManager.cursor.GetComponent<CursorScript>().ToggleShadow(shadow);
     }
 
     //Deliberatly crashes the system (not implemented)
