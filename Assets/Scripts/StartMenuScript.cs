@@ -35,29 +35,36 @@ public class StartMenuScript : MonoBehaviour
 
     public void InitialiseStartMenu()
     {
-        buttons = new GameObject[startMenuItems.Count];
-        for (int i = 0; i < buttons.Length; i++)
+        if (startMenuInterface.gameObject.activeSelf)
         {
-            buttons[i] = Instantiate(startMenuButton, startMenuInterface.transform);
-            StartMenuButtonScript buttonScript = buttons[i].GetComponent<StartMenuButtonScript>();
-
-            buttonScript.startMenuItem = startMenuItems[i];
-
-            /*if (themeManager.TaskbarColour.r <= 0.5f && themeManager.TaskbarColour.g <= 0.5f && themeManager.TaskbarColour.b <= 0.5f)
+            buttons = new GameObject[startMenuItems.Count];
+            for (int i = 0; i < buttons.Length; i++)
             {
-                buttons[i].GetComponentInChildren<Text>().color = Color.white;
+                buttons[i] = Instantiate(startMenuButton, startMenuInterface.transform);
+                StartMenuButtonScript buttonScript = buttons[i].GetComponent<StartMenuButtonScript>();
+
+                buttonScript.startMenuItem = startMenuItems[i];
+
+                /*if (themeManager.TaskbarColour.r <= 0.5f && themeManager.TaskbarColour.g <= 0.5f && themeManager.TaskbarColour.b <= 0.5f)
+                {
+                    buttons[i].GetComponentInChildren<Text>().color = Color.white;
+                }
+                else
+                {
+                    buttons[i].GetComponentInChildren<Text>().color = Color.black;
+                }*/
             }
-            else
-            {
-                buttons[i].GetComponentInChildren<Text>().color = Color.black;
-            }*/
-        }
 
-        startMenuInterface.sizeDelta = new Vector2
-            (160,
-            layoutGroup.padding.bottom + (startMenuButton.GetComponent<RectTransform>().rect.height * startMenuItems.Count) + (layoutGroup.spacing * (startMenuItems.Count - 1)) + layoutGroup.padding.top);
-        startMenuInterface.anchoredPosition = new Vector2(startMenuInterface.anchoredPosition.x, 29 + (startMenuButton.GetComponent<RectTransform>().rect.height / 2) * (startMenuItems.Count - 1));
-        initialised = true;
+            startMenuInterface.sizeDelta = new Vector2
+                (160,
+                layoutGroup.padding.bottom + (startMenuButton.GetComponent<RectTransform>().rect.height * startMenuItems.Count) + (layoutGroup.spacing * (startMenuItems.Count - 1)) + layoutGroup.padding.top);
+            startMenuInterface.anchoredPosition = new Vector2(startMenuInterface.anchoredPosition.x, 29 + (startMenuButton.GetComponent<RectTransform>().rect.height / 2) * (startMenuItems.Count - 1));
+            initialised = true;
+        }
+        else
+        {
+            CloseStartMenu();
+        }
     }
 
     public void CloseStartMenu()

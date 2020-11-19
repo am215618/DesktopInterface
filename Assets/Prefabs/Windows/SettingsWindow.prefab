@@ -1506,7 +1506,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1198395962326679233}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a10797211466b3b4eab14c8544b019f9, type: 3}
   m_Name: 
@@ -2887,7 +2887,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1dd2f1b7ff965bf4c88545fbf81583e4, type: 3}
   - {fileID: 21300000, guid: a70a40584e28ddc489f8206b3b4b3d4b, type: 3}
   - {fileID: 21300000, guid: e82d7b00f4bc65d408413c30fb1a7f28, type: 3}
-  showCursorOutline: 010001
+  showCursorOutline: 01000100
   cursorButton: {fileID: 471228497963157049, guid: 1705ec4b938fa854aada61ad70c6a063,
     type: 3}
   previewHasNoSeparateOutline: 1

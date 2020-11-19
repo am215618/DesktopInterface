@@ -32,6 +32,15 @@ public class NotificationObj : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     void Start() //Sets the sprites to the ones in properties.
     {
+        PopupScript[] existingNotifs = GetComponentsInChildren<PopupScript>();
+        if (existingNotifs != null)
+        {
+            for (int i = 0; i < existingNotifs.Length; i++)
+            {
+                Destroy(existingNotifs[i].gameObject);
+            }
+        }
+
         notificationImage.sprite = notification.notificationSprite;
         notificationCooldown = notification.notificationLifespan;
 
