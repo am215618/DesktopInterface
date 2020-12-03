@@ -12,17 +12,28 @@ public class StartMenuScript : MonoBehaviour
     public RectTransform startMenuInterface;
     VerticalLayoutGroup layoutGroup;
     //Gets the start menu items
+    public StartMenuItem shutdownItem;
     public List<StartMenuItem> startMenuItems;
 
     public GameObject startMenuButton;
     [SerializeField] GameObject[] buttons;
     bool initialised = false;
 
+    private void OnValidate()
+    {
+        if (startMenuItems[startMenuItems.Count - 1] != shutdownItem)
+        {
+            startMenuItems.Remove(shutdownItem);
+            startMenuItems.Add(shutdownItem);
+        }
+    }
+
     private void Awake() //Sets the theme manager to the instance in the scene.
     {
         themeManager = ThemeManager.instance;
         buttons = new GameObject[startMenuItems.Count];
         layoutGroup = startMenuInterface.GetComponent<VerticalLayoutGroup>();
+        themeManager.onClick += CloseStartMenu;
     }
 
     //This sets all of the buttons to the each of items in the menu.
@@ -63,12 +74,19 @@ public class StartMenuScript : MonoBehaviour
         }
         else
         {
-            CloseStartMenu();
+            startMenuInterface.gameObject.SetActive(false);
         }
     }
 
     public void CloseStartMenu()
     {
-        startMenuInterface.gameObject.SetActive(false);
+        if (!IsMouseOverUI())
+        {
+            startMenuInterface.gameObject.SetActive(false);
+        }
+    }
+    bool IsMouseOverUI()
+    {
+        return EventSystem.current.IsPointerOverGameObject();
     }
 }

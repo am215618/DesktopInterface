@@ -9,11 +9,14 @@ public class ThemeManager : MonoBehaviour
     #region Singleton
     public static ThemeManager instance;
 
-    void Awake()
+    void Validate()
     {
         instance = this;
     }
     #endregion
+
+    public delegate void OnClick();
+    public OnClick onClick;
 
     public Canvas ui;
     public Canvas cursorCanvas;
@@ -46,6 +49,8 @@ public class ThemeManager : MonoBehaviour
 
     private void OnValidate()
     {
+        Validate();
+
         Camera.main.backgroundColor = backgroundColour;
         cursor.GetComponent<Image>().color = cursorColour;
 

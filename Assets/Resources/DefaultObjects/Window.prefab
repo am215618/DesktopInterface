@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 1198395962326679236}
   - component: {fileID: 6928633862597279723}
   m_Layer: 5
-  m_Name: WindowTemplete
+  m_Name: Window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,7 +116,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 480, y: -280}
-  m_SizeDelta: {x: 204, y: 204}
+  m_SizeDelta: {x: 304, y: 304}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1198395962326679237
 CanvasRenderer:
@@ -254,7 +254,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Placeholder
+  m_Text: test
 --- !u!1 &1198395963131636349
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,7 +319,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 026b061b12850d044a94d33586eb6d68, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ef1a6813bdc4faf4f830b5dbf1ffab21, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

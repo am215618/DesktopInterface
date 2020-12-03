@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ef56a22b60670b4caf4df38e90dcb57, type: 3}
+  m_Name: Now Playing
+  m_EditorClassIdentifier: 
+  notificationSprite: {fileID: 21300000, guid: d9aa467c340d9dd4cb80cdb983c182af, type: 3}
+  notificationTitle: 'Now Playing:'
+  notificationText: Despacito
+  notificationToolTipText: Despacito
+  stayOnPermamently: 0
+  notificationLifespan: 5

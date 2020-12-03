@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class CursorScript : MonoBehaviour
+public class CursorScript : MonoBehaviour, IPointerClickHandler
 {
     //Variables
     Canvas canvas;
@@ -37,6 +37,14 @@ public class CursorScript : MonoBehaviour
         Cursor.visible = false;
     }
 
+    void Update()
+    {
+        if(Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2))
+        {
+            ThemeManager.instance.onClick?.Invoke();
+        }
+    }
+
     void LateUpdate()
     {
         //toggles the default cursor (the normal one) to not visible.
@@ -51,5 +59,20 @@ public class CursorScript : MonoBehaviour
     public void ToggleShadow(bool showShadow)
     {
         shadow.SetActive(showShadow);
+    }
+
+    void OnMouseDown()
+    {
+        
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        
+    }
+
+    void Clicked()
+    {
+        Debug.Log("Click");
     }
 }

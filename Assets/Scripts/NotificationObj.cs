@@ -24,6 +24,7 @@ public class NotificationObj : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public Notification notification;
     public GameObject toolTip;
     public GameObject Popup;
+    GameObject tmpPopup;
 
     public Image notificationImage;
     public bool spawnPopupBaloon;
@@ -46,6 +47,8 @@ public class NotificationObj : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
         if(spawnPopupBaloon)
             StartCoroutine(SpawnPopup());
+
+        ThemeManager.instance.onClick += PopupExpired;
     }
 
     void Update()
@@ -65,7 +68,7 @@ public class NotificationObj : MonoBehaviour, IPointerEnterHandler, IPointerExit
         yield return new WaitForSeconds(1f);
         
         //Sets a local popup variable to an instanced varient of the popup.
-        GameObject tmpPopup = Instantiate(Popup, gameObject.transform);
+        tmpPopup = Instantiate(Popup, gameObject.transform);
 
         //set up a popup script local variable to modify the properties of the popup.
         PopupScript popUpScript = tmpPopup.GetComponent<PopupScript>();
@@ -79,6 +82,11 @@ public class NotificationObj : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
         //popup dissappears after 5 seconds.
         yield return new WaitForSeconds(5f);
+        Destroy(tmpPopup);
+    }
+
+    void PopupExpired()
+    {
         Destroy(tmpPopup);
     }
 
