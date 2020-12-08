@@ -1,1 +1,3 @@
-My current desktop interface. Please have a go and see if you can find any bugs in it.
+My current desktop interface.
+
+If you want to see how I made it, [Go here](https://alexgame.dev/blog/)
