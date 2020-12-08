@@ -35,7 +35,7 @@ public class WindowScript : MonoBehaviour, IPointerClickHandler, IPointerDownHan
     public bool minimised;
     public bool maximised;
 
-    [SerializeField] Image maximiseButton;
+    Image maximiseButton;
 
     Vector2 originalWindowSize;
 

@@ -16,6 +16,7 @@ public class ExplorerScript : MonoBehaviour
     void Start()
     {
         icons = explorer.icons;
+     
         visibleIcons = new GameObject[icons.Count];
         for (int i = 0; i < icons.Count; i++)
         {

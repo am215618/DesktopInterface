@@ -70,6 +70,8 @@ public class AddDesktopElementsWindow : EditorWindow
 
         windowSize = EditorGUILayout.Vector2Field("Window Size: ", windowSize);
 
+        EditorGUILayout.Space();
+
         if (GUILayout.Button("Create Window"))
         {
             //When pressed, the icon will create an instance in the scene.
@@ -123,7 +125,7 @@ public class AddDesktopElementsWindow : EditorWindow
         iconWindow = (GameObject)EditorGUILayout.ObjectField(iconWindow, typeof(GameObject), allowSceneObjects: true);
         EditorGUILayout.EndHorizontal();
 
-        if(GUILayout.Button("Create Icon"))
+        if (GUILayout.Button("Create Icon"))
         {
             //When pressed, the icon will create an instance in the scene.
             if(iconSprite == null)
@@ -182,6 +184,8 @@ public class AddDesktopElementsWindow : EditorWindow
         EditorGUILayout.BeginHorizontal();
         putOnStartMenu = EditorGUILayout.Toggle("Add to start menu?", putOnStartMenu);
         EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.Space();
 
         if (GUILayout.Button("Create Start Menu Button"))
         {
