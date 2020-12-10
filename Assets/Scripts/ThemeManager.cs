@@ -60,6 +60,10 @@ public class ThemeManager : MonoBehaviour
 
         UpdateTheme();
     }
+    private void Awake()
+    {
+        OnValidate();
+    }
 
     //This changes the colours of the theme
     public void UpdateTheme()

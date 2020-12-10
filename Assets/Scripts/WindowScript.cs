@@ -21,7 +21,7 @@ public class WindowScript : MonoBehaviour, IPointerClickHandler, IPointerDownHan
         obj.transform.parent = ThemeManager.instance.ui.transform;
     }
 #endif
-    //variables
+    //variables for defining the window.
     RectTransform rect;
 
     public bool spawnTaskbarObj;

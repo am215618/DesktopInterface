@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class CursorScript : MonoBehaviour, IPointerClickHandler
 {
-    //Variables
+    //Cursor Variables
     Canvas canvas;
     Color cursorColour;
 

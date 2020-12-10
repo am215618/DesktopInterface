@@ -80,12 +80,10 @@ public class StartMenuScript : MonoBehaviour
 
     public void CloseStartMenu()
     {
-        if (!IsMouseOverUI())
-        {
-            startMenuInterface.gameObject.SetActive(false);
-        }
+        startMenuInterface.gameObject.SetActive(false);
     }
-    bool IsMouseOverUI()
+
+    public bool IsMouseOverUI()
     {
         return EventSystem.current.IsPointerOverGameObject();
     }

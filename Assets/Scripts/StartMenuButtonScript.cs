@@ -31,6 +31,6 @@ public class StartMenuButtonScript : MonoBehaviour
     public void OpenWindow()
     {
         Instantiate(window, ThemeManager.instance.ui.transform); //Creates a new window instance.
-        GetComponentInParent<StartMenuScript>().CloseStartMenu();
+        transform.parent.GetComponentInParent<StartMenuScript>().startMenuInterface.gameObject.SetActive(false);
     }
 }
