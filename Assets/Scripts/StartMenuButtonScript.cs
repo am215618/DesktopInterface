@@ -8,17 +8,38 @@ using UnityEngine.EventSystems;
 public class StartMenuButtonScript : MonoBehaviour
 {
     public StartMenuItem startMenuItem; //The properties.
+    StartMenuScript startMenu;
 
     Text itemText;
     Image itemImage;
     GameObject window; //Setting the window that it would open when clicked on.
 
+    bool IsOver = false;
+
     public void Start()
     {
+        startMenu = GetComponentInParent<VerticalLayoutGroup>().GetComponentInParent<StartMenuScript>();
+
         itemText = GetComponentInChildren<Text>();
         itemImage = transform.GetChild(1).GetComponent<Image>();
 
         SetProperties();
+    }
+
+    public bool IsMouseOverUI()
+    {
+        return EventSystem.current.IsPointerOverGameObject();
+    }
+
+    public void OnMouseDown()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            OpenWindow();
+            startMenu.CloseStartMenu();
+        }
     }
 
     public void SetProperties()

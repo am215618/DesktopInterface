@@ -33,7 +33,7 @@ public class StartMenuScript : MonoBehaviour
         themeManager = ThemeManager.instance;
         buttons = new GameObject[startMenuItems.Count];
         layoutGroup = startMenuInterface.GetComponent<VerticalLayoutGroup>();
-        themeManager.onClick += CloseStartMenu;
+        //themeManager.onClick += CloseStartMenu;
     }
 
     //This sets all of the buttons to the each of items in the menu.
@@ -80,7 +80,8 @@ public class StartMenuScript : MonoBehaviour
 
     public void CloseStartMenu()
     {
-        startMenuInterface.gameObject.SetActive(false);
+        if(IsMouseOverUI())
+            startMenuInterface.gameObject.SetActive(false);
     }
 
     public bool IsMouseOverUI()
