@@ -25,6 +25,7 @@ public class ThemeManager : MonoBehaviour
     public GameObject iconSpace;
     public GameObject cursor;
     public GameObject taskbar;
+    public GameObject tooltip;
 
     Text[] iconTexts;
 
@@ -44,8 +45,9 @@ public class ThemeManager : MonoBehaviour
     public Sprite maximiseButton;
     public Sprite unmaximiseButton;
 
-    public float maxClickDelay; //how far apart the two clicks can be.
     public bool cursorShadow;
+
+    public List<TitleBarScript> titleBarScripts;
 
     private void OnValidate()
     {
@@ -69,6 +71,15 @@ public class ThemeManager : MonoBehaviour
     public void UpdateTheme()
     {
         Camera.main.backgroundColor = backgroundColour;
+        tooltip.GetComponentInChildren<Image>().color = toolTipColour;
+        
+        for (int i = 0; i < titleBarScripts.Count; i++)
+        {
+            if(titleBarScripts[i].GetComponentInParent<WindowScript>().activeWindow)
+                titleBarScripts[i].gameObject.GetComponent<Image>().color = activeTitleBarColour;
+            else
+                titleBarScripts[i].gameObject.GetComponent<Image>().color = inactiveTitleBarColour;
+        }
 
         for (int i = 0; i < iconTexts.Length; i++)
         {

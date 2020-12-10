@@ -181,6 +181,8 @@ public class ColourPicker : MonoBehaviour
                 break;
 
         }
+
+        ThemeManager.instance.UpdateTheme();
     }
 
     public Color GetColour() //Returns the current colour, so that this could be accessed in other scripts.

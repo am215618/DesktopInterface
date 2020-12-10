@@ -40,7 +40,7 @@ public class WindowScript : MonoBehaviour, IPointerClickHandler, IPointerDownHan
     Vector2 originalWindowSize;
 
     [HideInInspector] public bool activeWindow = false;
-    public bool destroyOnClose;
+
     private void Awake() 
     {
         EventSystem.current.SetSelectedGameObject(gameObject);
@@ -54,6 +54,7 @@ public class WindowScript : MonoBehaviour, IPointerClickHandler, IPointerDownHan
             instancedTaskbarObj = Instantiate(taskbarObject);
             instancedTaskbarObj.GetComponent<TaskbarButtonScript>().window = this.gameObject;
         }
+        ThemeManager.instance.titleBarScripts.Add(gameObject.GetComponentInChildren<TitleBarScript>());
         ThemeManager.instance.OpenWindow(this);
     }
 
@@ -113,14 +114,8 @@ public class WindowScript : MonoBehaviour, IPointerClickHandler, IPointerDownHan
     public void CloseWindow() //destroys the taskbar object and the window.
     {
         Destroy(instancedTaskbarObj);
-        if (destroyOnClose)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            gameObject.SetActive(false);
-        }
+        ThemeManager.instance.titleBarScripts.Remove(gameObject.GetComponentInChildren<TitleBarScript>());
+        Destroy(gameObject);
     }
 
     public void OnPointerClick(PointerEventData eventData) //Sets the window to be on top of the others.
